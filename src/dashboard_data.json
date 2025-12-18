@@ -1,5 +1,5 @@
 {
-  "last_updated": "2025-12-18 21:07 UTC",
+  "last_updated": "2025-12-18 21:44 UTC",
   "stats": {
     "novelty": 0.0,
     "uniqueness": 60.3,
@@ -8,302 +8,302 @@
   "hypotheses": [
     {
       "relation": "hasAuthor",
-      "entity": "Xianghong Xu 0001",
-      "score": "0.1155",
-      "novel": false
-    },
-    {
-      "relation": "hasAuthor",
-      "entity": "Arpad Rimmel",
-      "score": "0.0942",
-      "novel": false
-    },
-    {
-      "relation": "Authored Paper",
-      "entity": "Data-Driven Exact Pole Placement for Linear Systems.",
-      "score": "0.0984",
-      "novel": false
-    },
-    {
-      "relation": "Authored Paper",
-      "entity": "Medical Imaging Systems - An Introductory Guide",
-      "score": "0.1079",
-      "novel": false
-    },
-    {
-      "relation": "Venue:",
-      "entity": "Deductive Software Verification",
-      "score": "0.1226",
-      "novel": false
-    },
-    {
-      "relation": "Venue:",
-      "entity": "Advances on Superelliptic Curves and their Applications",
-      "score": "0.1179",
-      "novel": false
-    },
-    {
-      "relation": "Authored Paper",
-      "entity": "Probabilistic Cooperative Location Estimation in Wireless Networks.",
-      "score": "0.0833",
-      "novel": false
-    },
-    {
-      "relation": "Published in",
-      "entity": "1990",
-      "score": "0.0986",
-      "novel": false
-    },
-    {
-      "relation": "Published in",
-      "entity": "1982",
-      "score": "0.1023",
-      "novel": false
-    },
-    {
-      "relation": "Published in",
-      "entity": "1976",
-      "score": "0.1004",
-      "novel": false
-    },
-    {
-      "relation": "Venue:",
-      "entity": "INLG (Generation Challenges)",
-      "score": "0.1523",
-      "novel": false
-    },
-    {
-      "relation": "Published in",
-      "entity": "1976",
-      "score": "0.1054",
-      "novel": false
-    },
-    {
-      "relation": "Published in",
-      "entity": "1974",
-      "score": "0.1486",
-      "novel": false
-    },
-    {
-      "relation": "Published in",
-      "entity": "1964",
-      "score": "0.1197",
-      "novel": false
-    },
-    {
-      "relation": "Authored Paper",
-      "entity": "Estimating morphological parameters of Tamarix ramosissima by Digital hemispherical image in the lower reaches of heihe river, northwest China.",
-      "score": "0.0882",
-      "novel": false
-    },
-    {
-      "relation": "Authored Paper",
-      "entity": "Hierarchical Page Eviction Policy for Unified Memory in GPUs.",
-      "score": "0.0803",
-      "novel": false
-    },
-    {
-      "relation": "hasAuthor",
-      "entity": "Maria Valera",
-      "score": "0.0806",
-      "novel": false
-    },
-    {
-      "relation": "Authored Paper",
-      "entity": "Realistic 3D Face Modeling by Fusing Multiple 2D Images.",
-      "score": "0.1023",
-      "novel": false
-    },
-    {
-      "relation": "Authored Paper",
-      "entity": "OLAP, Spatial.",
-      "score": "0.0963",
-      "novel": false
-    },
-    {
-      "relation": "Published in",
-      "entity": "1974",
-      "score": "0.1376",
-      "novel": false
-    },
-    {
-      "relation": "hasAuthor",
-      "entity": "Shingo Ata",
-      "score": "0.0887",
-      "novel": false
-    },
-    {
-      "relation": "Venue:",
-      "entity": "Local Binary Patterns",
-      "score": "0.1550",
-      "novel": false
-    },
-    {
-      "relation": "Venue:",
-      "entity": "Intelligent Monitoring, Control, and Security of Critical Infrastructure Systems",
-      "score": "0.1241",
-      "novel": false
-    },
-    {
-      "relation": "Authored Paper",
-      "entity": "Practical Observer Design for Nonlinear Systems using Caputo Fractional Derivative with Respect to Another Function.",
-      "score": "0.0946",
-      "novel": false
-    },
-    {
-      "relation": "Venue:",
-      "entity": "Computational Intelligence and Efficiency in Engineering Systems",
-      "score": "0.1371",
-      "novel": false
-    },
-    {
-      "relation": "hasAuthor",
-      "entity": "Nohbyung Park",
-      "score": "0.0773",
-      "novel": false
-    },
-    {
-      "relation": "Venue:",
-      "entity": "Usable Security",
-      "score": "0.1847",
-      "novel": false
-    },
-    {
-      "relation": "hasAuthor",
-      "entity": "H\u00fcseyin Hacihabiboglu",
-      "score": "0.1134",
-      "novel": false
-    },
-    {
-      "relation": "Published in",
-      "entity": "1974",
-      "score": "0.0938",
-      "novel": false
-    },
-    {
-      "relation": "Published in",
-      "entity": "1967",
-      "score": "0.1020",
-      "novel": false
-    },
-    {
-      "relation": "hasAuthor",
-      "entity": "Justin J. Lee",
-      "score": "0.0954",
-      "novel": false
-    },
-    {
-      "relation": "Venue:",
-      "entity": "Anomaly Detection as a Service",
-      "score": "0.1127",
-      "novel": false
-    },
-    {
-      "relation": "Venue:",
-      "entity": "Search-Based Applications",
-      "score": "0.2238",
-      "novel": false
-    },
-    {
-      "relation": "hasAuthor",
-      "entity": "Peter J. Haas",
-      "score": "0.1634",
-      "novel": false
-    },
-    {
-      "relation": "Authored Paper",
-      "entity": "Active Acoustic Impedance Mapping Using Mobile Robots.",
-      "score": "0.0943",
-      "novel": false
-    },
-    {
-      "relation": "hasAuthor",
-      "entity": "Livio Belegante",
-      "score": "0.0652",
-      "novel": false
-    },
-    {
-      "relation": "hasAuthor",
-      "entity": "Michael Hess 0002",
-      "score": "0.0848",
-      "novel": false
-    },
-    {
-      "relation": "hasAuthor",
-      "entity": "Edward F. Smith",
-      "score": "0.0885",
+      "entity": "Rongwei Wang",
+      "score": "0.1548",
       "novel": false
     },
     {
       "relation": "Published in",
       "entity": "1970",
-      "score": "0.1020",
-      "novel": false
-    },
-    {
-      "relation": "Published in",
-      "entity": "1984",
-      "score": "0.1093",
+      "score": "0.2568",
       "novel": false
     },
     {
       "relation": "hasAuthor",
-      "entity": "Daizhan Lijun Zhang",
-      "score": "0.0832",
+      "entity": "Xiaoyin Tang",
+      "score": "0.1664",
       "novel": false
     },
     {
       "relation": "Venue:",
-      "entity": "Web Accessibility (2nd Ed.)",
-      "score": "0.1130",
+      "entity": "Perceptual Issues in Visualization",
+      "score": "0.2715",
+      "novel": false
+    },
+    {
+      "relation": "Authored Paper",
+      "entity": "Multimodal Interaction in Image and Video Applications",
+      "score": "0.1842",
+      "novel": false
+    },
+    {
+      "relation": "Authored Paper",
+      "entity": "Model for estimating stress in pressurized boiler components based on interconnections.",
+      "score": "0.1592",
       "novel": false
     },
     {
       "relation": "Published in",
       "entity": "1967",
-      "score": "0.1246",
+      "score": "0.3189",
+      "novel": false
+    },
+    {
+      "relation": "Published in",
+      "entity": "1967",
+      "score": "0.3635",
       "novel": false
     },
     {
       "relation": "Venue:",
-      "entity": "Search-Based Applications",
-      "score": "0.1405",
+      "entity": "A Perspective in Theoretical Computer Science",
+      "score": "0.2692",
       "novel": false
     },
     {
-      "relation": "Authored Paper",
-      "entity": "Speckle statistics and long-term coherent SAR interferograms.",
-      "score": "0.0945",
+      "relation": "Venue:",
+      "entity": "Strategic Voting",
+      "score": "0.3468",
       "novel": false
     },
     {
-      "relation": "Authored Paper",
-      "entity": "SRes-NeRF: Improved Neural Radiance Fields for Realism and Accuracy of Specular Reflections.",
-      "score": "0.1181",
+      "relation": "Venue:",
+      "entity": "Symbolic Execution and Quantitative Reasoning",
+      "score": "0.3879",
       "novel": false
     },
     {
-      "relation": "Authored Paper",
-      "entity": "Detecting Irrigation Events Using Sentinel-1 Data.",
-      "score": "0.0833",
+      "relation": "Published in",
+      "entity": "1969",
+      "score": "0.3283",
+      "novel": false
+    },
+    {
+      "relation": "Venue:",
+      "entity": "Self-aware Computing Systems",
+      "score": "0.3098",
+      "novel": false
+    },
+    {
+      "relation": "Published in",
+      "entity": "1969",
+      "score": "0.3180",
+      "novel": false
+    },
+    {
+      "relation": "Venue:",
+      "entity": "Computational Logic",
+      "score": "0.2798",
       "novel": false
     },
     {
       "relation": "hasAuthor",
-      "entity": "Jaroslaw Goslinski",
-      "score": "0.0972",
+      "entity": "Yue-Shi Lee",
+      "score": "0.1586",
+      "novel": false
+    },
+    {
+      "relation": "hasAuthor",
+      "entity": "Dirk P. Snyman",
+      "score": "0.1500",
+      "novel": false
+    },
+    {
+      "relation": "Published in",
+      "entity": "1969",
+      "score": "0.4179",
+      "novel": false
+    },
+    {
+      "relation": "Published in",
+      "entity": "1967",
+      "score": "0.2796",
+      "novel": false
+    },
+    {
+      "relation": "hasAuthor",
+      "entity": "Murat \u00c7inar",
+      "score": "0.1274",
       "novel": false
     },
     {
       "relation": "Venue:",
-      "entity": "Usable Security",
-      "score": "0.1871",
+      "entity": "Data Cleaning",
+      "score": "0.2700",
+      "novel": false
+    },
+    {
+      "relation": "hasAuthor",
+      "entity": "Geetha Mohan",
+      "score": "0.1333",
       "novel": false
     },
     {
       "relation": "Authored Paper",
-      "entity": "Manifold Learning - Model Reduction in Engineering",
-      "score": "0.0881",
+      "entity": "On Test Data Volume Reduction for Multiple Scan Chain Designs.",
+      "score": "0.1432",
+      "novel": false
+    },
+    {
+      "relation": "Published in",
+      "entity": "1967",
+      "score": "0.2905",
+      "novel": false
+    },
+    {
+      "relation": "Published in",
+      "entity": "1967",
+      "score": "0.2411",
+      "novel": false
+    },
+    {
+      "relation": "Published in",
+      "entity": "1968",
+      "score": "0.2936",
+      "novel": false
+    },
+    {
+      "relation": "Authored Paper",
+      "entity": "Geo-Portal.",
+      "score": "0.1774",
+      "novel": false
+    },
+    {
+      "relation": "hasAuthor",
+      "entity": "Marijke Visser",
+      "score": "0.1730",
+      "novel": false
+    },
+    {
+      "relation": "Venue:",
+      "entity": "Organizational Implementation",
+      "score": "0.3315",
+      "novel": false
+    },
+    {
+      "relation": "Published in",
+      "entity": "1980",
+      "score": "0.2966",
+      "novel": false
+    },
+    {
+      "relation": "Authored Paper",
+      "entity": "Sparse Multiscale Patches (SMP) for Image Categorization.",
+      "score": "0.1144",
+      "novel": false
+    },
+    {
+      "relation": "hasAuthor",
+      "entity": "Liyu Cheng",
+      "score": "0.1544",
+      "novel": false
+    },
+    {
+      "relation": "Published in",
+      "entity": "1969",
+      "score": "0.2984",
+      "novel": false
+    },
+    {
+      "relation": "Authored Paper",
+      "entity": "Distributed time, conservative parallel logic simulation on GPUs.",
+      "score": "0.1211",
+      "novel": false
+    },
+    {
+      "relation": "Venue:",
+      "entity": "Blocks and Chains",
+      "score": "0.3112",
+      "novel": false
+    },
+    {
+      "relation": "Venue:",
+      "entity": "POPL: The First Ten Years",
+      "score": "0.2803",
+      "novel": false
+    },
+    {
+      "relation": "Venue:",
+      "entity": "Data Cleaning",
+      "score": "0.3579",
+      "novel": false
+    },
+    {
+      "relation": "Authored Paper",
+      "entity": "Palmprint Representation.",
+      "score": "0.1781",
+      "novel": false
+    },
+    {
+      "relation": "Published in",
+      "entity": "1967",
+      "score": "0.2784",
+      "novel": false
+    },
+    {
+      "relation": "Authored Paper",
+      "entity": "Finite-Time Adaptive Fuzzy Control of Output Constrained Nonlinear Systems with Disturbance Observer.",
+      "score": "0.1686",
+      "novel": false
+    },
+    {
+      "relation": "Venue:",
+      "entity": "Handbook on Data Centers",
+      "score": "0.3753",
+      "novel": false
+    },
+    {
+      "relation": "Authored Paper",
+      "entity": "The role of current working context in professional search.",
+      "score": "0.1401",
+      "novel": false
+    },
+    {
+      "relation": "Published in",
+      "entity": "1967",
+      "score": "0.2939",
+      "novel": false
+    },
+    {
+      "relation": "Published in",
+      "entity": "1967",
+      "score": "0.2955",
+      "novel": false
+    },
+    {
+      "relation": "Authored Paper",
+      "entity": "Design and Software Implementation of Heuristic and Suboptimal Strategies for the Mancala/Kalah Game.",
+      "score": "0.1484",
+      "novel": false
+    },
+    {
+      "relation": "hasAuthor",
+      "entity": "Robert J. Fuentes",
+      "score": "0.1393",
+      "novel": false
+    },
+    {
+      "relation": "Authored Paper",
+      "entity": "Deep RF Device Fingerprinting by Semi-Supervised Learning with Meta Pseudo Time-Frequency Labels.",
+      "score": "0.1235",
+      "novel": false
+    },
+    {
+      "relation": "Authored Paper",
+      "entity": "A Little Book on Teaching: A Beginner's Guide for Educators of Engineering and Applied Science",
+      "score": "0.1887",
+      "novel": false
+    },
+    {
+      "relation": "Venue:",
+      "entity": "Blocks and Chains",
+      "score": "0.3179",
+      "novel": false
+    },
+    {
+      "relation": "Venue:",
+      "entity": "Internet of Things and Inter-cooperative Computational Technologies for Collective Intelligence",
+      "score": "0.2352",
       "novel": false
     }
   ]
