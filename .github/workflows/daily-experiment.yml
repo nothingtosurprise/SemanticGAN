@@ -23,7 +23,7 @@ jobs:
         run: |
           sudo rm -rf /usr/share/dotnet
           sudo rm -rf /usr/local/lib/android
-          df -h
+          df -h 
 
       - name: Set up Python environment
         uses: actions/setup-python@v5
@@ -34,11 +34,13 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
+          pip install huggingface_hub 
 
       - name: Download Model from Hugging Face
+        continue-on-error: true 
         run: |
           mkdir -p checkpoints
-          python -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='erdemonal/SemanticGAN', filename='gan_latest.pth', local_dir='checkpoints/', local_dir_use_symlinks=False)"
+          python -c "from huggingface_hub import hf_hub_download; hf_hub_download(repo_id='erdemonal/SemanticGAN', filename='gan_latest.pth', local_dir='checkpoints/')"
 
       - name: Train GAN model
         run: python scripts/train_gan.py
@@ -57,7 +59,7 @@ jobs:
 
       - name: Push Updated Model to Hugging Face
         env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }} 
         run: |
           python -c "from huggingface_hub import HfApi; api = HfApi(); api.upload_file(path_or_fileobj='checkpoints/gan_latest.pth', path_in_repo='gan_latest.pth', repo_id='erdemonal/SemanticGAN', token='${{ secrets.HF_TOKEN }}')"
 
@@ -65,11 +67,13 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
+          
           git add data/synthetic/*.txt
           git add data/processed/training_log.csv
           git add data/processed/loss_curve.png
           git add semantic_map.html
           git add dashboard_data.json
-          git commit -m "Update dashboard and metrics [skip ci]" || echo "No changes"
+          
+          git commit -m "Update dashboard and metrics [skip ci]" || echo "No changes to commit"
           git pull --rebase origin main
           git push
