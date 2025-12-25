@@ -12,7 +12,7 @@ from tqdm import tqdm
 
 class SampledDBLPDataset(Dataset):
     def __init__(self, data_path, target_entity_count=3000000):
-        print(f"[INFO] Smart loader started. Target: Top {target_entity_count} entities...")
+        print(f"[INFO] Loader started. Target: Top {target_entity_count} entities...")
         
         print("   -> Step 1/2: Counting entity frequencies...")
         entity_counts = Counter()
