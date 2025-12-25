@@ -1,6 +1,6 @@
 # Wasserstein GAN for Knowledge Graph Completion with Continuous Learning
 
-[![Daily Semantic GAN Training](https://github.com/erdemonal/SemanticGAN/actions/workflows/daily-experiment.yml/badge.svg)](https://github.com/erdemonal/SemanticGAN/actions/workflows/daily-experiment.yml)
+[![Sync Results](https://github.com/erdemonal/SemanticGAN/actions/workflows/sync-results.yml/badge.svg)](https://github.com/erdemonal/SemanticGAN/actions/workflows/sync-results.yml)
 [![pages-build-deployment](https://github.com/erdemonal/SemanticGAN/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/erdemonal/SemanticGAN/actions/workflows/pages/pages-build-deployment)
 
 This repository contains a research prototype for Knowledge Graph Completion on the DBLP Computer Science Bibliography.

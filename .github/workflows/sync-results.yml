@@ -1,4 +1,4 @@
-name: Sync Results
+name: sync-results
 
 on:
   workflow_dispatch:
