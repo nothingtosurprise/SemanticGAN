@@ -210,7 +210,7 @@ def train():
         output_file = SYNTHETIC_DIR / f"generated_{timestamp}.txt"
         
         with torch.no_grad():
-            num_samples = 100
+            num_samples = 200
             test_r = torch.randint(0, dataset.num_relations, (num_samples,)).to(device)
             noise = torch.randn(num_samples, EMBEDDING_DIM).to(device)
             
