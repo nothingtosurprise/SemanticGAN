@@ -139,7 +139,7 @@ def main():
 
     decoded_hypotheses = []
     for i, (h, r, t, score) in enumerate(synthetic_triples):
-        if i >= 100: break
+        if i >= 500: break
         
         head_name = id_to_name.get(h, h)
         rel_name = id_to_rel.get(r, f"REL:{r}").replace("dblp:", "").replace("rdf:", "")

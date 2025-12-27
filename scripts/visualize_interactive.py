@@ -80,7 +80,6 @@ def create_interactive_map():
     fig = px.scatter(
         df, x="X", y="Y", color="Type", hover_name="Name",
         template="plotly_dark",
-        title=f"Semantic Space Map (Sampled {len(df)} Nodes)",
         color_discrete_map={
             "Venue": "#00ffff",       
             "Author/Person": "#ff0000", 
