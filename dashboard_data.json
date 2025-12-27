@@ -1,5 +1,5 @@
 {
-  "last_updated": "2025-12-27 15:55 UTC",
+  "last_updated": "2025-12-27 18:11 UTC",
   "training_status": {
     "epoch": 50,
     "d_loss": -0.1299,
@@ -801,6 +801,2806 @@
       "relation": "coauthorWith",
       "tail": "Jennifer S. Brown",
       "score": -0.2273,
+      "status": "Verified"
+    },
+    {
+      "head": "Ricardo P. Jacobi",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0256,
+      "status": "Verified"
+    },
+    {
+      "head": "Shuowei Jin",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3111,
+      "status": "Verified"
+    },
+    {
+      "head": "Jiaxin Yue",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0164,
+      "status": "Verified"
+    },
+    {
+      "head": "Joseph F. Poduslo",
+      "relation": "coauthorWith",
+      "tail": "Suna Choi",
+      "score": -0.0927,
+      "status": "Verified"
+    },
+    {
+      "head": "Marie Claire Cyrille",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0253,
+      "status": "Verified"
+    },
+    {
+      "head": "Kenji Kashima",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.0073,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Yong Cheng",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0103,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/conf/icassp",
+      "relation": "type",
+      "tail": "Zhiguo Xie",
+      "score": -0.3257,
+      "status": "Verified"
+    },
+    {
+      "head": "Guangyan Huang",
+      "relation": "coauthorWith",
+      "tail": "conf/data/2022",
+      "score": 0.0269,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Lina Yao 0001",
+      "relation": "coauthorWith",
+      "tail": "2019-01-01",
+      "score": -0.299,
+      "status": "Verified"
+    },
+    {
+      "head": "Riaz Bordie",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0258,
+      "status": "Verified"
+    },
+    {
+      "head": "Lei Qin",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3091,
+      "status": "Verified"
+    },
+    {
+      "head": "Domenica Tasca",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0258,
+      "status": "Verified"
+    },
+    {
+      "head": "Sanghyun Woo",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": -0.2838,
+      "status": "Verified"
+    },
+    {
+      "head": "Harish Garg",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.2501,
+      "status": "Verified"
+    },
+    {
+      "head": "Shubham Rai",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0258,
+      "status": "Verified"
+    },
+    {
+      "head": "David Walker 0001",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3003,
+      "status": "Verified"
+    },
+    {
+      "head": "Vincent Kee",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2945,
+      "status": "Verified"
+    },
+    {
+      "head": "Elena Austin",
+      "relation": "coauthorWith",
+      "tail": "conf/ic3ina/HidayatMKPSRDKD19",
+      "score": -0.0645,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Yoshiaki Saito",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3008,
+      "status": "Verified"
+    },
+    {
+      "head": "Akira Mizuno",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0258,
+      "status": "Verified"
+    },
+    {
+      "head": "Federico Sangati",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3008,
+      "status": "Verified"
+    },
+    {
+      "head": "Qiuzhen Wang",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3111,
+      "status": "Verified"
+    },
+    {
+      "head": "Dalai Tang",
+      "relation": "coauthorWith",
+      "tail": "Harley R. Myler",
+      "score": -0.1999,
+      "status": "Verified"
+    },
+    {
+      "head": "Hua Chen 0007",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0103,
+      "status": "Verified"
+    },
+    {
+      "head": "Sumit",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.194,
+      "status": "Verified"
+    },
+    {
+      "head": "Chris Wren",
+      "relation": "coauthorWith",
+      "tail": "conf/ic3ina/HidayatMKPSRDKD19",
+      "score": -0.069,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Yonatan Gizachew Achamyeleh",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.2183,
+      "status": "Structural Match"
+    },
+    {
+      "head": "venue/journal/ijflis",
+      "relation": "type",
+      "tail": "Jason W. Rupe",
+      "score": 0.0061,
+      "status": "Verified"
+    },
+    {
+      "head": "Thomas Z. Lauritzen",
+      "relation": "coauthorWith",
+      "tail": "Michal Raczynski",
+      "score": -0.007,
+      "status": "Verified"
+    },
+    {
+      "head": "Alexander Eng",
+      "relation": "coauthorWith",
+      "tail": "Manoj Datta",
+      "score": -0.1855,
+      "status": "Verified"
+    },
+    {
+      "head": "Micheal Hewett",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": -0.3015,
+      "status": "Verified"
+    },
+    {
+      "head": "Devy Widjaja",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3008,
+      "status": "Verified"
+    },
+    {
+      "head": "D. Caleb Rucker",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0258,
+      "status": "Verified"
+    },
+    {
+      "head": "Anish Shah",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0924,
+      "status": "Verified"
+    },
+    {
+      "head": "Franois-Xavier Fanard",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": -0.2918,
+      "status": "Verified"
+    },
+    {
+      "head": "Jarno Nikkanen",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0121,
+      "status": "Verified"
+    },
+    {
+      "head": "Andrei Grinyuk",
+      "relation": "coauthorWith",
+      "tail": "2019-01-01",
+      "score": -0.0418,
+      "status": "Verified"
+    },
+    {
+      "head": "Regivan H. N. Santiago",
+      "relation": "coauthorWith",
+      "tail": "Jennifer S. Brown",
+      "score": -0.0655,
+      "status": "Verified"
+    },
+    {
+      "head": "Ning-Yi Wang",
+      "relation": "coauthorWith",
+      "tail": "Harley R. Myler",
+      "score": -0.1934,
+      "status": "Verified"
+    },
+    {
+      "head": "Yu Wu",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0121,
+      "status": "Verified"
+    },
+    {
+      "head": "Aamer Jaleel",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0098,
+      "status": "Verified"
+    },
+    {
+      "head": "Gregg Tracton",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.2508,
+      "status": "Verified"
+    },
+    {
+      "head": "Tomasz Trzcinski",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0249,
+      "status": "Verified"
+    },
+    {
+      "head": "Bahare Kiumarsi",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0103,
+      "status": "Verified"
+    },
+    {
+      "head": "JungYul Choi",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0307,
+      "status": "Verified"
+    },
+    {
+      "head": "Duncan Watson-Parris",
+      "relation": "coauthorWith",
+      "tail": "Pavan Kumar Datla Jagannadha",
+      "score": -0.1585,
+      "status": "Verified"
+    },
+    {
+      "head": "conf/arcs/2013",
+      "relation": "publishedInYear",
+      "tail": "Kenneth J. Musselman",
+      "score": -0.173,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Valentin Holzwarth",
+      "relation": "coauthorWith",
+      "tail": "Pavan Kumar Datla Jagannadha",
+      "score": -0.1538,
+      "status": "Verified"
+    },
+    {
+      "head": "Runxin Xu",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.2925,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/conf/iros",
+      "relation": "type",
+      "tail": "Zhiguo Xie",
+      "score": -0.3257,
+      "status": "Verified"
+    },
+    {
+      "head": "Michele Dolfi",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": -0.2921,
+      "status": "Verified"
+    },
+    {
+      "head": "Hongyi Xin",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": -0.2623,
+      "status": "Verified"
+    },
+    {
+      "head": "Yuan Zhong 0001",
+      "relation": "baseName",
+      "tail": "1066-1079",
+      "score": -0.1096,
+      "status": "Verified"
+    },
+    {
+      "head": "Mariane Fernandes",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0304,
+      "status": "Verified"
+    },
+    {
+      "head": "Gloria Bordogna",
+      "relation": "coauthorWith",
+      "tail": "Berislav Andrlic",
+      "score": -0.0274,
+      "status": "Verified"
+    },
+    {
+      "head": "Zhufei Chu",
+      "relation": "coauthorWith",
+      "tail": "2019-01-01",
+      "score": -0.3008,
+      "status": "Verified"
+    },
+    {
+      "head": "Arsalan Ghorbanian",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": -0.1798,
+      "status": "Verified"
+    },
+    {
+      "head": "Guangda Yang",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.3095,
+      "status": "Structural Match"
+    },
+    {
+      "head": "journals/access/DengHLCCFZYHLX20",
+      "relation": "listedIn",
+      "tail": "Ljubisa Kocic",
+      "score": -0.2875,
+      "status": "Verified"
+    },
+    {
+      "head": "Zhi Yang",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0137,
+      "status": "Verified"
+    },
+    {
+      "head": "Aditya Parashar",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0471,
+      "status": "Verified"
+    },
+    {
+      "head": "Wen Wang",
+      "relation": "coauthorWith",
+      "tail": "conf/ic3ina/HidayatMKPSRDKD19",
+      "score": -0.044,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Xing Zhao 0010",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.3095,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Robert John Walters",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0255,
+      "status": "Verified"
+    },
+    {
+      "head": "Geert Hellings",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0258,
+      "status": "Verified"
+    },
+    {
+      "head": "Carlo Sarto",
+      "relation": "coauthorWith",
+      "tail": "Manoj Datta",
+      "score": -0.2972,
+      "status": "Verified"
+    },
+    {
+      "head": "Jack Collier",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": -0.2928,
+      "status": "Verified"
+    },
+    {
+      "head": "Tae-Eog Lee",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": -0.2808,
+      "status": "Verified"
+    },
+    {
+      "head": "Mahmudul Hasan Abid",
+      "relation": "coauthorWith",
+      "tail": "conf/data/2022",
+      "score": -0.0076,
+      "status": "Structural Match"
+    },
+    {
+      "head": "conf/ipsn/KimPCDFGT07",
+      "relation": "lastModified",
+      "tail": "Ljubisa Kocic",
+      "score": -0.0555,
+      "status": "Verified"
+    },
+    {
+      "head": "Zhenyun Deng",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3007,
+      "status": "Verified"
+    },
+    {
+      "head": "Hongzan Sun",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3057,
+      "status": "Verified"
+    },
+    {
+      "head": "Suet Lee",
+      "relation": "coauthorWith",
+      "tail": "1273-1280",
+      "score": -0.2903,
+      "status": "Verified"
+    },
+    {
+      "head": "Wen Jiang 0002",
+      "relation": "baseName",
+      "tail": "1066-1079",
+      "score": 0.0177,
+      "status": "Verified"
+    },
+    {
+      "head": "Christiane Jockwitz",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": -0.2579,
+      "status": "Verified"
+    },
+    {
+      "head": "Tobias Seufert",
+      "relation": "coauthorWith",
+      "tail": "Adithya Krishna",
+      "score": -0.145,
+      "status": "Verified"
+    },
+    {
+      "head": "Sungwon Kim 0002",
+      "relation": "coauthorWith",
+      "tail": "2019-01-01",
+      "score": -0.0227,
+      "status": "Verified"
+    },
+    {
+      "head": "Jenq-Neng Hwang",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3072,
+      "status": "Verified"
+    },
+    {
+      "head": "John Knoll",
+      "relation": "coauthorWith",
+      "tail": "conf/ic3ina/HidayatMKPSRDKD19",
+      "score": -0.252,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Rui Li 0027",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": -0.0051,
+      "status": "Verified"
+    },
+    {
+      "head": "Valentin Schwind",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": -0.2942,
+      "status": "Verified"
+    },
+    {
+      "head": "Ziyou Song",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0103,
+      "status": "Verified"
+    },
+    {
+      "head": "Pierre Degond",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.0118,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Jie Li 0002",
+      "relation": "homonymID",
+      "tail": "505-521",
+      "score": -0.0172,
+      "status": "Structural Match"
+    },
+    {
+      "head": "journals/ploscb/ZhangCYDIDPFDRAL22",
+      "relation": "hasAuthor",
+      "tail": "Ergo'IHM",
+      "score": -0.1927,
+      "status": "Verified"
+    },
+    {
+      "head": "Seanie Lee",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.0159,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Xingbo Wang 0001",
+      "relation": "coauthorWith",
+      "tail": "Michal Raczynski",
+      "score": -0.2816,
+      "status": "Verified"
+    },
+    {
+      "head": "Keigo Watanabe",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0255,
+      "status": "Verified"
+    },
+    {
+      "head": "Liqiang Zhang 0001",
+      "relation": "baseName",
+      "tail": "1066-1079",
+      "score": 0.0185,
+      "status": "Verified"
+    },
+    {
+      "head": "Moritz Wiese",
+      "relation": "coauthorWith",
+      "tail": "1273-1280",
+      "score": -0.304,
+      "status": "Verified"
+    },
+    {
+      "head": "Hari Sundar",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0133,
+      "status": "Verified"
+    },
+    {
+      "head": "Hao Chen 0004",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0778,
+      "status": "Verified"
+    },
+    {
+      "head": "conf/ondm/WeiLLLWZLZYLZ23",
+      "relation": "presentedAt",
+      "tail": "Ljubisa Kocic",
+      "score": -0.2903,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/conf/ccta",
+      "relation": "type",
+      "tail": "Saqib Hussain",
+      "score": -0.3239,
+      "status": "Verified"
+    },
+    {
+      "head": "Keisuke Kinoshita",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2884,
+      "status": "Verified"
+    },
+    {
+      "head": "Mara Jos Gmez-Silva",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0138,
+      "status": "Verified"
+    },
+    {
+      "head": "Aditya Gunturu",
+      "relation": "coauthorWith",
+      "tail": "Jennifer S. Brown",
+      "score": -0.0646,
+      "status": "Verified"
+    },
+    {
+      "head": "Corina S. Pasareanu",
+      "relation": "coauthorWith",
+      "tail": "Jamal Ahmed Rahim",
+      "score": -0.3074,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/journal/sensors",
+      "relation": "type",
+      "tail": "VPT@CAV",
+      "score": -0.0167,
+      "status": "Verified"
+    },
+    {
+      "head": "Yongkai Wu",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0103,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/conf/pearl",
+      "relation": "type",
+      "tail": "Saqib Hussain",
+      "score": -0.3059,
+      "status": "Verified"
+    },
+    {
+      "head": "Laurence P. J. Kenney",
+      "relation": "coauthorWith",
+      "tail": "2019-01-01",
+      "score": -0.0418,
+      "status": "Verified"
+    },
+    {
+      "head": "Liang Chen 0003",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3111,
+      "status": "Verified"
+    },
+    {
+      "head": "Tiffany J. Callahan",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0258,
+      "status": "Verified"
+    },
+    {
+      "head": "Jawad Saleem",
+      "relation": "coauthorWith",
+      "tail": "Michal Raczynski",
+      "score": -0.227,
+      "status": "Verified"
+    },
+    {
+      "head": "Mohamed Azab",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.2309,
+      "status": "Verified"
+    },
+    {
+      "head": "Gal A. Kaminka",
+      "relation": "coauthorWith",
+      "tail": "1273-1280",
+      "score": -0.304,
+      "status": "Verified"
+    },
+    {
+      "head": "Yanming Liu 0001",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0103,
+      "status": "Verified"
+    },
+    {
+      "head": "Dhabaleswar K. Panda 0001",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.3042,
+      "status": "Verified"
+    },
+    {
+      "head": "Ruizhe Zhu",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.2996,
+      "status": "Structural Match"
+    },
+    {
+      "head": "conf/dai/1996",
+      "relation": "volume",
+      "tail": "Lane P. Hughston",
+      "score": -0.0465,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/journal/bioinformatics",
+      "relation": "type",
+      "tail": "University of Naples Federico II, Italy",
+      "score": 0.002,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/conf/iwbbio",
+      "relation": "type",
+      "tail": "Zhiguo Xie",
+      "score": -0.3257,
+      "status": "Verified"
+    },
+    {
+      "head": "Qing-Long Han",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3111,
+      "status": "Verified"
+    },
+    {
+      "head": "Yabing Jiang",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.2729,
+      "status": "Verified"
+    },
+    {
+      "head": "Raymond A. Paul",
+      "relation": "coauthorWith",
+      "tail": "Jennifer S. Brown",
+      "score": -0.2831,
+      "status": "Verified"
+    },
+    {
+      "head": "Jim Gray 0001",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.01,
+      "status": "Verified"
+    },
+    {
+      "head": "Matthew Kowalewski",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3076,
+      "status": "Verified"
+    },
+    {
+      "head": "Zuoyi Chen",
+      "relation": "coauthorWith",
+      "tail": "Aissam Jadli",
+      "score": -0.2747,
+      "status": "Verified"
+    },
+    {
+      "head": "Zhipeng Zhang",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": -0.0003,
+      "status": "Verified"
+    },
+    {
+      "head": "Jonathan P. Lang",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0307,
+      "status": "Verified"
+    },
+    {
+      "head": "Biao Song",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.3082,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Qingrong Jackie Wu",
+      "relation": "coauthorWith",
+      "tail": "Aissam Jadli",
+      "score": -0.274,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/conf/arcs",
+      "relation": "type",
+      "tail": "Umair Akram",
+      "score": -0.3263,
+      "status": "Verified"
+    },
+    {
+      "head": "conf/caise/2003ws",
+      "relation": "volume",
+      "tail": "Pippa Smart",
+      "score": -0.2839,
+      "status": "Verified"
+    },
+    {
+      "head": "Antonio S. Montemayor",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2951,
+      "status": "Verified"
+    },
+    {
+      "head": "Tingdan Zhang",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2466,
+      "status": "Verified"
+    },
+    {
+      "head": "Leonid B. Freidovich",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": -0.3015,
+      "status": "Verified"
+    },
+    {
+      "head": "Sara V. Rodrguez",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3008,
+      "status": "Verified"
+    },
+    {
+      "head": "Andrew G. Alleyne",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": -0.2116,
+      "status": "Verified"
+    },
+    {
+      "head": "Jure Leskovec",
+      "relation": "coauthorWith",
+      "tail": "Manoj Datta",
+      "score": -0.2938,
+      "status": "Verified"
+    },
+    {
+      "head": "Lei Zhang 0050",
+      "relation": "coauthorWith",
+      "tail": "2019-01-01",
+      "score": -0.298,
+      "status": "Verified"
+    },
+    {
+      "head": "Kristian Kroschel",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0258,
+      "status": "Verified"
+    },
+    {
+      "head": "Ralf Ksters",
+      "relation": "coauthorWith",
+      "tail": "Berislav Andrlic",
+      "score": -0.0214,
+      "status": "Verified"
+    },
+    {
+      "head": "Di Wang",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0103,
+      "status": "Verified"
+    },
+    {
+      "head": "Kyung Tae",
+      "relation": "coauthorWith",
+      "tail": "Joan L. Imbwaga",
+      "score": -0.1564,
+      "status": "Verified"
+    },
+    {
+      "head": "Lezhi Wang",
+      "relation": "coauthorWith",
+      "tail": "Suna Choi",
+      "score": -0.2498,
+      "status": "Verified"
+    },
+    {
+      "head": "Peter Bro Miltersen",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0258,
+      "status": "Verified"
+    },
+    {
+      "head": "Bjoern H. Menze",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3008,
+      "status": "Verified"
+    },
+    {
+      "head": "Srinivas Sukumar",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2848,
+      "status": "Verified"
+    },
+    {
+      "head": "Tsai-Lien Wong",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.0117,
+      "status": "Verified"
+    },
+    {
+      "head": "Hyunjin Ahn",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0183,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/conf/icip",
+      "relation": "type",
+      "tail": "Saqib Hussain",
+      "score": -0.3215,
+      "status": "Verified"
+    },
+    {
+      "head": "Shuwei Bai",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3111,
+      "status": "Verified"
+    },
+    {
+      "head": "Zengrui Jin",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": 0.0117,
+      "status": "Verified"
+    },
+    {
+      "head": "Alfio Dario Grasso",
+      "relation": "coauthorWith",
+      "tail": "Sandeep Kaur",
+      "score": -0.1906,
+      "status": "Verified"
+    },
+    {
+      "head": "Tadashige Iwao",
+      "relation": "coauthorWith",
+      "tail": "Karthik Singh",
+      "score": -0.2937,
+      "status": "Verified"
+    },
+    {
+      "head": "Yu-Chieh Chen",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": 0.0117,
+      "status": "Verified"
+    },
+    {
+      "head": "Atabak Eghbal",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2798,
+      "status": "Verified"
+    },
+    {
+      "head": "Lei Zhao 0013",
+      "relation": "baseName",
+      "tail": "1066-1079",
+      "score": 0.0177,
+      "status": "Verified"
+    },
+    {
+      "head": "Dominique Orban",
+      "relation": "coauthorWith",
+      "tail": "Jennifer S. Brown",
+      "score": -0.0603,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/conf/qomex",
+      "relation": "type",
+      "tail": "Zhiguo Xie",
+      "score": -0.3257,
+      "status": "Verified"
+    },
+    {
+      "head": "Michael M. Goodwin",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2697,
+      "status": "Verified"
+    },
+    {
+      "head": "Hongyuan Yu",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3111,
+      "status": "Verified"
+    },
+    {
+      "head": "Jakub Svoboda",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.0282,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Lei Ju 0001",
+      "relation": "coauthorWith",
+      "tail": "Aslan Tchamkerten",
+      "score": -0.1463,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/journal/ploscb",
+      "relation": "type",
+      "tail": "University of Naples Federico II, Italy",
+      "score": 0.0,
+      "status": "Verified"
+    },
+    {
+      "head": "Wei-Chung Hsu",
+      "relation": "coauthorWith",
+      "tail": "Manoj Datta",
+      "score": 0.0034,
+      "status": "Verified"
+    },
+    {
+      "head": "Maochao Xu",
+      "relation": "coauthorWith",
+      "tail": "Manoj Datta",
+      "score": 0.0048,
+      "status": "Verified"
+    },
+    {
+      "head": "Tao Yang 0037",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3111,
+      "status": "Verified"
+    },
+    {
+      "head": "Niranjan Mahabeleshwar",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.0124,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/journal/siamcomp",
+      "relation": "type",
+      "tail": "Umair Akram",
+      "score": 0.008,
+      "status": "Verified"
+    },
+    {
+      "head": "Shuai Liao",
+      "relation": "coauthorWith",
+      "tail": "Berislav Andrlic",
+      "score": -0.3099,
+      "status": "Verified"
+    },
+    {
+      "head": "Andreas Kolling",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2819,
+      "status": "Verified"
+    },
+    {
+      "head": "Lorenzo Incipini",
+      "relation": "coauthorWith",
+      "tail": "Pavan Kumar Datla Jagannadha",
+      "score": -0.1709,
+      "status": "Verified"
+    },
+    {
+      "head": "Xiujuan Chen",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0241,
+      "status": "Verified"
+    },
+    {
+      "head": "Yan Gao 0022",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2422,
+      "status": "Verified"
+    },
+    {
+      "head": "Ehsan Akbari",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.0276,
+      "status": "Verified"
+    },
+    {
+      "head": "Weixi Song",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": -0.0051,
+      "status": "Verified"
+    },
+    {
+      "head": "Yue Lu 0001",
+      "relation": "homonymID",
+      "tail": "505-521",
+      "score": -0.015,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Zdenek Kolka",
+      "relation": "coauthorWith",
+      "tail": "1273-1280",
+      "score": -0.3039,
+      "status": "Verified"
+    },
+    {
+      "head": "Rong Zhang 0002",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0103,
+      "status": "Verified"
+    },
+    {
+      "head": "Melisa Alkan",
+      "relation": "coauthorWith",
+      "tail": "Michael M. Norton",
+      "score": -0.133,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/journal/iando",
+      "relation": "type",
+      "tail": "Jason W. Rupe",
+      "score": 0.0178,
+      "status": "Verified"
+    },
+    {
+      "head": "Eric Vasey",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0232,
+      "status": "Verified"
+    },
+    {
+      "head": "Gerard Thompson",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0258,
+      "status": "Verified"
+    },
+    {
+      "head": "Yun Liu 0013",
+      "relation": "coauthorWith",
+      "tail": "E. S. Rahul",
+      "score": -0.0561,
+      "status": "Verified"
+    },
+    {
+      "head": "Guanyu Qiao",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0106,
+      "status": "Verified"
+    },
+    {
+      "head": "William H. Robinson",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.0049,
+      "status": "Verified"
+    },
+    {
+      "head": "Oleksandr Sushchov",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2982,
+      "status": "Verified"
+    },
+    {
+      "head": "Andrea Donisi",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3008,
+      "status": "Verified"
+    },
+    {
+      "head": "Jiapeng Wu",
+      "relation": "coauthorWith",
+      "tail": "Manoj Datta",
+      "score": 0.0261,
+      "status": "Verified"
+    },
+    {
+      "head": "Qionghai Dai",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3111,
+      "status": "Verified"
+    },
+    {
+      "head": "Matthew Zoufaly",
+      "relation": "coauthorWith",
+      "tail": "Kota Kitamichi",
+      "score": -0.0073,
+      "status": "Verified"
+    },
+    {
+      "head": "Hongzhi Liang",
+      "relation": "coauthorWith",
+      "tail": "Jennifer S. Brown",
+      "score": -0.2831,
+      "status": "Verified"
+    },
+    {
+      "head": "Oliver Sander",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0258,
+      "status": "Verified"
+    },
+    {
+      "head": "Sukanjana Lekapat",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.067,
+      "status": "Verified"
+    },
+    {
+      "head": "Walaa Medhat 0001",
+      "relation": "homonymID",
+      "tail": "505-521",
+      "score": -0.0924,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Maria Ahmed Qureshi",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": 0.0248,
+      "status": "Verified"
+    },
+    {
+      "head": "journals/sensors/LiHLZXYZL23",
+      "relation": "hasAuthor",
+      "tail": "1261-1275",
+      "score": -0.1336,
+      "status": "Verified"
+    },
+    {
+      "head": "Ramesh Hariharan",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0258,
+      "status": "Verified"
+    },
+    {
+      "head": "Hao Tang",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3111,
+      "status": "Verified"
+    },
+    {
+      "head": "Majid Mafi",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.0833,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Yasuhiko Takenaga",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3008,
+      "status": "Verified"
+    },
+    {
+      "head": "Mathieu Hatt",
+      "relation": "coauthorWith",
+      "tail": "Payman Behnam",
+      "score": -0.1391,
+      "status": "Verified"
+    },
+    {
+      "head": "Hao Fei 0001",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0152,
+      "status": "Verified"
+    },
+    {
+      "head": "Gerald Fritz",
+      "relation": "coauthorWith",
+      "tail": "Michal Raczynski",
+      "score": -0.0196,
+      "status": "Verified"
+    },
+    {
+      "head": "Marcus Botacin",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3005,
+      "status": "Verified"
+    },
+    {
+      "head": "Edvaldo Soares Arajo Neto",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0087,
+      "status": "Verified"
+    },
+    {
+      "head": "Louisa Emmons",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0207,
+      "status": "Verified"
+    },
+    {
+      "head": "Fengju Hu",
+      "relation": "coauthorWith",
+      "tail": "Manoj Datta",
+      "score": 0.0034,
+      "status": "Verified"
+    },
+    {
+      "head": "Guocan Feng",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0103,
+      "status": "Verified"
+    },
+    {
+      "head": "Huanhuan Cao",
+      "relation": "coauthorWith",
+      "tail": "Jennifer S. Brown",
+      "score": -0.2831,
+      "status": "Verified"
+    },
+    {
+      "head": "Per Jacobsson",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.021,
+      "status": "Verified"
+    },
+    {
+      "head": "Il-Yong Park",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.0282,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Stefano Tonetta",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0249,
+      "status": "Verified"
+    },
+    {
+      "head": "Danial Khan",
+      "relation": "coauthorWith",
+      "tail": "1273-1280",
+      "score": -0.2818,
+      "status": "Verified"
+    },
+    {
+      "head": "Koji Zettsu",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2963,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/conf/iwsg",
+      "relation": "type",
+      "tail": "Jason W. Rupe",
+      "score": -0.3241,
+      "status": "Verified"
+    },
+    {
+      "head": "Dennis Eckhardt",
+      "relation": "coauthorWith",
+      "tail": "Suna Choi",
+      "score": -0.0927,
+      "status": "Verified"
+    },
+    {
+      "head": "Qingji Wang",
+      "relation": "coauthorWith",
+      "tail": "2025-12-07",
+      "score": 0.0261,
+      "status": "Verified"
+    },
+    {
+      "head": "Karolina Zaczynska",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0214,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/journal/comcom",
+      "relation": "type",
+      "tail": "Zhiguo Xie",
+      "score": 0.0051,
+      "status": "Verified"
+    },
+    {
+      "head": "Justin Scott Giboney",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.1389,
+      "status": "Verified"
+    },
+    {
+      "head": "Mohamed Ayoub Neggaz",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0191,
+      "status": "Verified"
+    },
+    {
+      "head": "Ali Bereyhi",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3065,
+      "status": "Verified"
+    },
+    {
+      "head": "conf/egve/2007",
+      "relation": "conferenceYear",
+      "tail": "Ljubisa Kocic",
+      "score": -0.0558,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Parth Patwa",
+      "relation": "coauthorWith",
+      "tail": "Shirley Leckie",
+      "score": -0.0666,
+      "status": "Verified"
+    },
+    {
+      "head": "Tao Qin 0001",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3111,
+      "status": "Verified"
+    },
+    {
+      "head": "Hui-Lu Khoo",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.2986,
+      "status": "Verified"
+    },
+    {
+      "head": "Sayantan Choudhury",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0178,
+      "status": "Verified"
+    },
+    {
+      "head": "Birgit Derntl",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0258,
+      "status": "Verified"
+    },
+    {
+      "head": "Qing Fu",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3111,
+      "status": "Verified"
+    },
+    {
+      "head": "Elena V. Ignatieva",
+      "relation": "coauthorWith",
+      "tail": "Jennifer S. Brown",
+      "score": -0.0503,
+      "status": "Verified"
+    },
+    {
+      "head": "Tatsuya Suzuki",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0304,
+      "status": "Verified"
+    },
+    {
+      "head": "Jingliang Cheng",
+      "relation": "coauthorWith",
+      "tail": "Sanket B. Shah",
+      "score": -0.2143,
+      "status": "Verified"
+    },
+    {
+      "head": "Jingqun Tang",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3111,
+      "status": "Verified"
+    },
+    {
+      "head": "Bernd Hamann",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0307,
+      "status": "Verified"
+    },
+    {
+      "head": "Anssi Sorvisto",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0252,
+      "status": "Verified"
+    },
+    {
+      "head": "John N. Tsitsiklis",
+      "relation": "coauthorWith",
+      "tail": "Jennifer S. Brown",
+      "score": -0.0539,
+      "status": "Verified"
+    },
+    {
+      "head": "Haibo Lin",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": 0.0177,
+      "status": "Verified"
+    },
+    {
+      "head": "conf/issta/RenYMXJSLC21",
+      "relation": "hasAuthor",
+      "tail": "1261-1275",
+      "score": -0.1192,
+      "status": "Verified"
+    },
+    {
+      "head": "Xin Sun 0001",
+      "relation": "homonymID",
+      "tail": "505-521",
+      "score": -0.3047,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Jean-Franois Tomb",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0147,
+      "status": "Verified"
+    },
+    {
+      "head": "Padmal Vitharana",
+      "relation": "coauthorWith",
+      "tail": "Ian Galton",
+      "score": -0.0965,
+      "status": "Verified"
+    },
+    {
+      "head": "Zihan Xu",
+      "relation": "coauthorWith",
+      "tail": "conf/ic3ina/HidayatMKPSRDKD19",
+      "score": -0.0386,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Paulo Romero Martins Maciel",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0256,
+      "status": "Verified"
+    },
+    {
+      "head": "Xinming Huang 0001",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.309,
+      "status": "Verified"
+    },
+    {
+      "head": "Ifigeneia-Maria Tsioutsia",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3008,
+      "status": "Verified"
+    },
+    {
+      "head": "Jie Fu 0001",
+      "relation": "coauthorWith",
+      "tail": "Berislav Andrlic",
+      "score": -0.3099,
+      "status": "Verified"
+    },
+    {
+      "head": "Zhengtian Wu",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3029,
+      "status": "Verified"
+    },
+    {
+      "head": "Ian D. Reid 0001",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": -0.0017,
+      "status": "Verified"
+    },
+    {
+      "head": "Hongsuda Tangmunarunkit",
+      "relation": "coauthorWith",
+      "tail": "Ryszard Zygala",
+      "score": -0.0676,
+      "status": "Verified"
+    },
+    {
+      "head": "Tatsuya Kato",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": -0.3015,
+      "status": "Verified"
+    },
+    {
+      "head": "Yi Guo",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": -0.0051,
+      "status": "Verified"
+    },
+    {
+      "head": "Srividya Tirunellai Rajamani",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0258,
+      "status": "Verified"
+    },
+    {
+      "head": "Boyuan Pan",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3111,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/journal/bspc",
+      "relation": "type",
+      "tail": "Saqib Hussain",
+      "score": 0.0019,
+      "status": "Verified"
+    },
+    {
+      "head": "Pietro Mercati",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.1989,
+      "status": "Verified"
+    },
+    {
+      "head": "Zunfu Wang",
+      "relation": "coauthorWith",
+      "tail": "2019-01-01",
+      "score": -0.3001,
+      "status": "Verified"
+    },
+    {
+      "head": "Reza Malekzadeh",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.2343,
+      "status": "Verified"
+    },
+    {
+      "head": "Yu-Jen Chen",
+      "relation": "coauthorWith",
+      "tail": "Scott Kontak",
+      "score": 0.0206,
+      "status": "Verified"
+    },
+    {
+      "head": "Jatin Sharma",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3008,
+      "status": "Verified"
+    },
+    {
+      "head": "Hubertus F. von Bremen",
+      "relation": "coauthorWith",
+      "tail": "2019-01-01",
+      "score": -0.0418,
+      "status": "Verified"
+    },
+    {
+      "head": "Pengbo Huang",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0341,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/conf/iasam",
+      "relation": "type",
+      "tail": "Saqib Hussain",
+      "score": -0.3239,
+      "status": "Verified"
+    },
+    {
+      "head": "Charles Christian Miers",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2999,
+      "status": "Verified"
+    },
+    {
+      "head": "Yuki Nishida 0002",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3005,
+      "status": "Verified"
+    },
+    {
+      "head": "Jordi Bonet-Dalmau",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3008,
+      "status": "Verified"
+    },
+    {
+      "head": "Xiufang Li",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3111,
+      "status": "Verified"
+    },
+    {
+      "head": "Zheng Cui",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.3079,
+      "status": "Verified"
+    },
+    {
+      "head": "Julia Starke",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0258,
+      "status": "Verified"
+    },
+    {
+      "head": "Tsung-Han Tsai 0004",
+      "relation": "baseName",
+      "tail": "1066-1079",
+      "score": 0.002,
+      "status": "Verified"
+    },
+    {
+      "head": "Shreesha G. Bhat",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0258,
+      "status": "Verified"
+    },
+    {
+      "head": "Sagar Deshpande",
+      "relation": "coauthorWith",
+      "tail": "conf/ic3ina/HidayatMKPSRDKD19",
+      "score": -0.1806,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Alexander Raake",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": -0.2928,
+      "status": "Verified"
+    },
+    {
+      "head": "Yunpeng Hou",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0103,
+      "status": "Verified"
+    },
+    {
+      "head": "Amanda Martinez",
+      "relation": "coauthorWith",
+      "tail": "Aissam Jadli",
+      "score": -0.0249,
+      "status": "Verified"
+    },
+    {
+      "head": "Strahinja Dosen",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0101,
+      "status": "Verified"
+    },
+    {
+      "head": "V. Zamkovoy",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0288,
+      "status": "Verified"
+    },
+    {
+      "head": "Chandrasekaran Jayaraman",
+      "relation": "coauthorWith",
+      "tail": "Berislav Andrlic",
+      "score": -0.3099,
+      "status": "Verified"
+    },
+    {
+      "head": "Virendra R. Sule",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.0952,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Kai Kang",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": 0.0117,
+      "status": "Verified"
+    },
+    {
+      "head": "Woo-Chan Park",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2902,
+      "status": "Verified"
+    },
+    {
+      "head": "Kendric R. Ortiz",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3008,
+      "status": "Verified"
+    },
+    {
+      "head": "Jiguo Yu",
+      "relation": "coauthorWith",
+      "tail": "Pavan Kumar Datla Jagannadha",
+      "score": -0.1661,
+      "status": "Verified"
+    },
+    {
+      "head": "Iigo Iturrate",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3008,
+      "status": "Verified"
+    },
+    {
+      "head": "Thomas Weise 0001",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": 0.0165,
+      "status": "Verified"
+    },
+    {
+      "head": "Adrian Drees",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": -0.2928,
+      "status": "Verified"
+    },
+    {
+      "head": "Ricardo Jardim-Gonalves",
+      "relation": "coauthorWith",
+      "tail": "Jennifer S. Brown",
+      "score": -0.0599,
+      "status": "Verified"
+    },
+    {
+      "head": "Fangjinhua Wang",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.0124,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Jia Zhao 0004",
+      "relation": "homonymID",
+      "tail": "505-521",
+      "score": -0.0119,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Da Yang 0001",
+      "relation": "baseName",
+      "tail": "1066-1079",
+      "score": 0.0145,
+      "status": "Verified"
+    },
+    {
+      "head": "Thorsten Kalb",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2756,
+      "status": "Verified"
+    },
+    {
+      "head": "conf/samos/MasourosSGKCXRPSPPVKPAGGASGBRSST23",
+      "relation": "hasAuthor",
+      "tail": "1261-1275",
+      "score": -0.1976,
+      "status": "Verified"
+    },
+    {
+      "head": "Mohsen Guizani",
+      "relation": "coauthorWith",
+      "tail": "Berislav Andrlic",
+      "score": -0.309,
+      "status": "Verified"
+    },
+    {
+      "head": "Mohamed Faten Zhani",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.294,
+      "status": "Verified"
+    },
+    {
+      "head": "William H. Sanders",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2853,
+      "status": "Verified"
+    },
+    {
+      "head": "Hong-ming Ma",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0103,
+      "status": "Verified"
+    },
+    {
+      "head": "Francisco Louzada-Neto",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.1714,
+      "status": "Verified"
+    },
+    {
+      "head": "Fan Yang",
+      "relation": "coauthorWith",
+      "tail": "Yousef A. M. Qasem",
+      "score": -0.0507,
+      "status": "Verified"
+    },
+    {
+      "head": "Guolin Sun",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.3067,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Zhixing Huang",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3111,
+      "status": "Verified"
+    },
+    {
+      "head": "Takashi Hattori",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": -0.3015,
+      "status": "Verified"
+    },
+    {
+      "head": "Jan Peters 0001",
+      "relation": "baseName",
+      "tail": "1066-1079",
+      "score": -0.3272,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/conf/iui",
+      "relation": "type",
+      "tail": "Jason W. Rupe",
+      "score": -0.3241,
+      "status": "Verified"
+    },
+    {
+      "head": "Gregory Zacharewicz",
+      "relation": "coauthorWith",
+      "tail": "2019-01-01",
+      "score": -0.032,
+      "status": "Verified"
+    },
+    {
+      "head": "Aiping Wang",
+      "relation": "coauthorWith",
+      "tail": "Michal Raczynski",
+      "score": -0.2943,
+      "status": "Verified"
+    },
+    {
+      "head": "Shota Horiguchi",
+      "relation": "coauthorWith",
+      "tail": "Manoj Datta",
+      "score": -0.2972,
+      "status": "Verified"
+    },
+    {
+      "head": "Paul van Mulbregt",
+      "relation": "coauthorWith",
+      "tail": "Madeleine C. Fombad",
+      "score": -0.109,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/journal/corr",
+      "relation": "type",
+      "tail": "2727",
+      "score": 0.0181,
+      "status": "Verified"
+    },
+    {
+      "head": "Sammo Cho",
+      "relation": "coauthorWith",
+      "tail": "Manoj Datta",
+      "score": -0.2946,
+      "status": "Verified"
+    },
+    {
+      "head": "Chenghao Song",
+      "relation": "coauthorWith",
+      "tail": "Jennifer S. Brown",
+      "score": -0.2151,
+      "status": "Verified"
+    },
+    {
+      "head": "Patricio Vielva",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2812,
+      "status": "Verified"
+    },
+    {
+      "head": "Fengshun Lu",
+      "relation": "coauthorWith",
+      "tail": "Berislav Andrlic",
+      "score": -0.3032,
+      "status": "Verified"
+    },
+    {
+      "head": "Martin I. Sereno",
+      "relation": "coauthorWith",
+      "tail": "Yousef A. M. Qasem",
+      "score": -0.2579,
+      "status": "Verified"
+    },
+    {
+      "head": "Robert H. Wolfe",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": -0.2819,
+      "status": "Verified"
+    },
+    {
+      "head": "David McG. Squire",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.1949,
+      "status": "Verified"
+    },
+    {
+      "head": "Juan Liu",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0131,
+      "status": "Verified"
+    },
+    {
+      "head": "Luis Rndez",
+      "relation": "coauthorWith",
+      "tail": "Jennifer S. Brown",
+      "score": -0.0655,
+      "status": "Verified"
+    },
+    {
+      "head": "Corinna Breitinger",
+      "relation": "coauthorWith",
+      "tail": "Manoj Datta",
+      "score": -0.2972,
+      "status": "Verified"
+    },
+    {
+      "head": "H. Troy Nagle",
+      "relation": "coauthorWith",
+      "tail": "Jennifer S. Brown",
+      "score": -0.0717,
+      "status": "Verified"
+    },
+    {
+      "head": "Mattie Fellows",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0114,
+      "status": "Verified"
+    },
+    {
+      "head": "Hongbo Lu",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.3095,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Igor M. Sauer",
+      "relation": "coauthorWith",
+      "tail": "Manoj Datta",
+      "score": -0.2972,
+      "status": "Verified"
+    },
+    {
+      "head": "Lech Raczynski",
+      "relation": "coauthorWith",
+      "tail": "Madeleine C. Fombad",
+      "score": -0.109,
+      "status": "Verified"
+    },
+    {
+      "head": "Jens Herder",
+      "relation": "coauthorWith",
+      "tail": "Jennifer S. Brown",
+      "score": -0.0655,
+      "status": "Verified"
+    },
+    {
+      "head": "Chen-Da Liu-Zhang",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": -0.3012,
+      "status": "Verified"
+    },
+    {
+      "head": "journals/corr/abs-2407-06748",
+      "relation": "hasAuthor",
+      "tail": "1261-1275",
+      "score": -0.182,
+      "status": "Verified"
+    },
+    {
+      "head": "Alessandro Di Giorgio 0001",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2979,
+      "status": "Verified"
+    },
+    {
+      "head": "Abdullah Almaatouq",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.261,
+      "status": "Verified"
+    },
+    {
+      "head": "Sidan Zhu",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0351,
+      "status": "Verified"
+    },
+    {
+      "head": "Yong Xue",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0123,
+      "status": "Verified"
+    },
+    {
+      "head": "Hao Hou",
+      "relation": "coauthorWith",
+      "tail": "2025-12-07",
+      "score": 0.0029,
+      "status": "Verified"
+    },
+    {
+      "head": "Jianguo Wang 0001",
+      "relation": "coauthorWith",
+      "tail": "Berislav Andrlic",
+      "score": -0.3099,
+      "status": "Verified"
+    },
+    {
+      "head": "Antoine Aello",
+      "relation": "coauthorWith",
+      "tail": "Manoj Datta",
+      "score": -0.2951,
+      "status": "Verified"
+    },
+    {
+      "head": "Shuang Qiu 0002",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": 0.0264,
+      "status": "Verified"
+    },
+    {
+      "head": "Nora Hollenstein",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.017,
+      "status": "Verified"
+    },
+    {
+      "head": "Luca Andrea Ludovico",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3008,
+      "status": "Verified"
+    },
+    {
+      "head": "Jos Bravo 0001",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": -0.3015,
+      "status": "Verified"
+    },
+    {
+      "head": "Qingchen Liu",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3111,
+      "status": "Verified"
+    },
+    {
+      "head": "journals/corr/abs-2509-20843",
+      "relation": "hasAuthor",
+      "tail": "Ergo'IHM",
+      "score": -0.1927,
+      "status": "Verified"
+    },
+    {
+      "head": "Xiang Huang",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": 0.0117,
+      "status": "Verified"
+    },
+    {
+      "head": "Subramanian S. Iyer",
+      "relation": "coauthorWith",
+      "tail": "Manoj Datta",
+      "score": -0.287,
+      "status": "Verified"
+    },
+    {
+      "head": "Tomoki Watanabe",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0119,
+      "status": "Verified"
+    },
+    {
+      "head": "Basem Y. Alkazemi",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.0534,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/conf/aciids",
+      "relation": "type",
+      "tail": "University of Naples Federico II, Italy",
+      "score": -0.3229,
+      "status": "Verified"
+    },
+    {
+      "head": "Suleyman Ulusoy",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": 0.0367,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/journal/tie",
+      "relation": "type",
+      "tail": "University of Naples Federico II, Italy",
+      "score": 0.0033,
+      "status": "Verified"
+    },
+    {
+      "head": "Mark A. Taylor",
+      "relation": "coauthorWith",
+      "tail": "Jennifer S. Brown",
+      "score": -0.0655,
+      "status": "Verified"
+    },
+    {
+      "head": "Chunbo Liu",
+      "relation": "coauthorWith",
+      "tail": "Manoj Datta",
+      "score": 0.0034,
+      "status": "Verified"
+    },
+    {
+      "head": "Gwennaele Fichant",
+      "relation": "coauthorWith",
+      "tail": "Harley R. Myler",
+      "score": -0.1319,
+      "status": "Verified"
+    },
+    {
+      "head": "Omid Aramoon",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3111,
+      "status": "Verified"
+    },
+    {
+      "head": "Frank H. F. Leung",
+      "relation": "coauthorWith",
+      "tail": "1273-1280",
+      "score": 0.0167,
+      "status": "Verified"
+    },
+    {
+      "head": "Lecture Notes in Computer Science",
+      "relation": "seriesPage",
+      "tail": "Anastasia Y. Perepelkina",
+      "score": -0.2627,
+      "status": "Verified"
+    },
+    {
+      "head": "Olivier Glck",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.299,
+      "status": "Verified"
+    },
+    {
+      "head": "Quan Wang",
+      "relation": "coauthorWith",
+      "tail": "Muhammad Waseem Anwar",
+      "score": -0.0646,
+      "status": "Verified"
+    },
+    {
+      "head": "Shengpu Niu",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0136,
+      "status": "Verified"
+    },
+    {
+      "head": "Chengtao Wen",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0845,
+      "status": "Verified"
+    },
+    {
+      "head": "Michael Morris",
+      "relation": "coauthorWith",
+      "tail": "Berislav Andrlic",
+      "score": -0.0399,
+      "status": "Verified"
+    },
+    {
+      "head": "Natarajan Amritha",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0115,
+      "status": "Verified"
+    },
+    {
+      "head": "Xiaohan Yu 0004",
+      "relation": "baseName",
+      "tail": "1066-1079",
+      "score": 0.0177,
+      "status": "Verified"
+    },
+    {
+      "head": "Marco Torchiano",
+      "relation": "coauthorWith",
+      "tail": "Jennifer S. Brown",
+      "score": -0.0655,
+      "status": "Verified"
+    },
+    {
+      "head": "Yannick Estve",
+      "relation": "coauthorWith",
+      "tail": "Berislav Andrlic",
+      "score": -0.0276,
+      "status": "Verified"
+    },
+    {
+      "head": "Riccardo Dondi",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": -0.2927,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/journal/icl",
+      "relation": "type",
+      "tail": "Zhiguo Xie",
+      "score": 0.0057,
+      "status": "Verified"
+    },
+    {
+      "head": "Huijie Tang",
+      "relation": "coauthorWith",
+      "tail": "Jennifer S. Brown",
+      "score": -0.2831,
+      "status": "Verified"
+    },
+    {
+      "head": "Md Ashiqur Rahman",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": 0.0387,
+      "status": "Verified"
+    },
+    {
+      "head": "Hongling Shi",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.3095,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Liangying Peng",
+      "relation": "coauthorWith",
+      "tail": "Michal Raczynski",
+      "score": -0.2919,
+      "status": "Verified"
+    },
+    {
+      "head": "Charles Ci Wen Lim",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3018,
+      "status": "Verified"
+    },
+    {
+      "head": "Jason Hiser",
+      "relation": "coauthorWith",
+      "tail": "Atheer F. Al-Jazrawi",
+      "score": -0.2421,
+      "status": "Verified"
+    },
+    {
+      "head": "Zhen Zhao 0004",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3087,
+      "status": "Verified"
+    },
+    {
+      "head": "Ioannis G. Tollis",
+      "relation": "coauthorWith",
+      "tail": "Jennifer S. Brown",
+      "score": -0.0655,
+      "status": "Verified"
+    },
+    {
+      "head": "Wei Zhu",
+      "relation": "coauthorWith",
+      "tail": "Mohamed Abd El-Wahed",
+      "score": 0.0026,
+      "status": "Verified"
+    },
+    {
+      "head": "Hexiang Li",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.2972,
+      "status": "Verified"
+    },
+    {
+      "head": "Jinda Lu",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.302,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Yubo Chen 0001",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": 0.02,
+      "status": "Verified"
+    },
+    {
+      "head": "Vaggos Chatziafratis",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.0078,
+      "status": "Verified"
+    },
+    {
+      "head": "Jinlei Jiang",
+      "relation": "coauthorWith",
+      "tail": "Aslan Tchamkerten",
+      "score": -0.1388,
+      "status": "Verified"
+    },
+    {
+      "head": "Lorenzo Cavallaro",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3008,
+      "status": "Verified"
+    },
+    {
+      "head": "Ho John Lee",
+      "relation": "coauthorWith",
+      "tail": "Dalong Liu",
+      "score": -0.3015,
+      "status": "Verified"
+    },
+    {
+      "head": "Syed Sarfaraz Akhtar",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2723,
+      "status": "Verified"
+    },
+    {
+      "head": "Adrien Gaidon",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.3007,
+      "status": "Verified"
+    },
+    {
+      "head": "Gunther Heidemann",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0307,
+      "status": "Verified"
+    },
+    {
+      "head": "Natalia Razinkov",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0073,
+      "status": "Verified"
+    },
+    {
+      "head": "Isabella Sldner-Rembold",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2998,
+      "status": "Verified"
+    },
+    {
+      "head": "Marty Rabens",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.0383,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Xianxian Li",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3077,
+      "status": "Verified"
+    },
+    {
+      "head": "Sangho Kim 0001",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.2094,
+      "status": "Verified"
+    },
+    {
+      "head": "Haiying Yu",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.3079,
+      "status": "Verified"
+    },
+    {
+      "head": "Hirofumi Fukuyama",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.0528,
+      "status": "Verified"
+    },
+    {
+      "head": "Hyang-Ja Yang",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.2921,
+      "status": "Verified"
+    },
+    {
+      "head": "Wen-Bin Han",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.3079,
+      "status": "Verified"
+    },
+    {
+      "head": "Martin Bscher",
+      "relation": "coauthorWith",
+      "tail": "2025-12-07",
+      "score": -0.2798,
+      "status": "Verified"
+    },
+    {
+      "head": "Mariano-Florentino Cuellar",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0307,
+      "status": "Verified"
+    },
+    {
+      "head": "George Xylomenos",
+      "relation": "coauthorWith",
+      "tail": "Yousef A. M. Qasem",
+      "score": -0.2675,
+      "status": "Verified"
+    },
+    {
+      "head": "Stephen J. Sweeney",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.1021,
+      "status": "Verified"
+    },
+    {
+      "head": "Wietse Z. Venema",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0072,
+      "status": "Verified"
+    },
+    {
+      "head": "Xutong Wang",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.31,
+      "status": "Verified"
+    },
+    {
+      "head": "conf/micro/ChenLLZHWLCXST14",
+      "relation": "pages",
+      "tail": "Ljubisa Kocic",
+      "score": -0.2764,
+      "status": "Verified"
+    },
+    {
+      "head": "Mengjie Zhao",
+      "relation": "coauthorWith",
+      "tail": "books/mk/DittrichG00",
+      "score": -0.2627,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Ben Y. Zhao",
+      "relation": "coauthorWith",
+      "tail": "Michal Raczynski",
+      "score": -0.2964,
+      "status": "Verified"
+    },
+    {
+      "head": "Bojidar Rangelov",
+      "relation": "coauthorWith",
+      "tail": "Adrin Contreras",
+      "score": -0.3066,
+      "status": "Verified"
+    },
+    {
+      "head": "Fadi J. Kurdahi",
+      "relation": "coauthorWith",
+      "tail": "505-521",
+      "score": -0.0692,
+      "status": "Verified"
+    },
+    {
+      "head": "venue/conf/groupware",
+      "relation": "type",
+      "tail": "Jason W. Rupe",
+      "score": -0.3104,
+      "status": "Verified"
+    },
+    {
+      "head": "Diana Andone",
+      "relation": "coauthorWith",
+      "tail": "conf/ic3ina/HidayatMKPSRDKD19",
+      "score": -0.2727,
+      "status": "Structural Match"
+    },
+    {
+      "head": "Sandy Whitehouse",
+      "relation": "coauthorWith",
+      "tail": "Anastasiia Ryabkova",
+      "score": -0.0307,
+      "status": "Verified"
+    },
+    {
+      "head": "conf/aaai/MehrabWCHLTCKSP22",
+      "relation": "partOf",
+      "tail": "Ljubisa Kocic",
+      "score": -0.0358,
       "status": "Verified"
     }
   ]
