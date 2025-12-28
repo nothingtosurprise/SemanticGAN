@@ -3,7 +3,7 @@
 [![Sync Results](https://github.com/erdemonal/SemanticGAN/actions/workflows/sync-results.yml/badge.svg)](https://github.com/erdemonal/SemanticGAN/actions/workflows/sync-results.yml)
 [![pages-build-deployment](https://github.com/erdemonal/SemanticGAN/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/erdemonal/SemanticGAN/actions/workflows/pages/pages-build-deployment)
 
-This repository contains a research prototype for Knowledge Graph Completion on the DBLP Computer Science Bibliography.
+This repository contains an experimental research system for knowledge graph completion on the DBLP Computer Science Bibliography using Wasserstein GANs.
 
 The system uses a Wasserstein GAN to generate candidate RDF triples from an evolving publication graph. Model training is executed periodically using an automated workflow.
 
