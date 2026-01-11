@@ -40,10 +40,6 @@ Dataset Hub: [erdemonal/SemanticGAN-Dataset](https://huggingface.co/datasets/erd
 
 The automated training workflow fetches processed data from the Dataset Hub and restores model states from the Model Hub before each training run.
 
-## Repository Structure
-
-Technical report in `paper/`, preprocessing scripts in `scripts/`, model code in `src/`, data in `data/`, checkpoints in `checkpoints/`.
-
 ## Data Availability
 
 The DBLP dataset is publicly available from https://dblp.uni-trier.de/xml
