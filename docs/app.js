@@ -33,7 +33,7 @@ function renderConstraints(measure) {
     document.getElementById("constraint-chart"),
     items,
     (item) => (occ ? Math.log10(item.occurrences) : item.percent),
-    (item) => (occ ? fmt.format(item.occurrences) : `${item.percent}%`),
+    (item) => (occ ? fmt.format(item.occurrences) : treeLabel(item)),
   );
 }
 
@@ -91,17 +91,24 @@ function renderCoverage() {
   ).join("");
   document.getElementById("coverage-notes").innerHTML = [
     "6,335 extracted trees have a complete file list. One heavy tree stopped because its archive exceeded 200 MiB.",
-    "2,724 extracted trees have partial counts: a parsed file failed, a file was larger than 20 MiB, a download failed, or the file was a Git LFS pointer.",
+    "2,724 extracted trees have partial counts: a parsed file failed, a file was larger than 20 MiB, a download failed, or the file was a Git LFS pointer. A tree is marked partial if even one candidate file could not contribute to the counts; the tree itself remains in the analysis.",
     "Seven verified trees were not extracted because their file listing stayed unresolved. They are inside the 6,343 and outside the 6,336.",
   ].map((text) => `<li>${text}</li>`).join("");
 }
 
+function treeLabel(item) {
+  return `${Number(item.percent).toFixed(1)}% (${fmt.format(item.trees)} trees)`;
+}
+
 function renderTargets() {
+  const order = ["sh:targetClass", "sh:targetSubjectsOf", "sh:targetObjectsOf", "sh:targetNode"];
+  const byName = new Map(DATA.targets.map((item) => [item.name, item]));
+  const items = order.map((name) => byName.get(name)).filter(Boolean);
   bars(
     document.getElementById("target-chart"),
-    DATA.targets,
+    items,
     (item) => item.percent,
-    (item) => `${item.percent}%`,
+    treeLabel,
   );
 }
 

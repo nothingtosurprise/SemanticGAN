@@ -1,10 +1,23 @@
-# SHACL GitHub discovery
+# SHACL GitHub corpus
 
-Milestone 1 discovers public GitHub repositories that may contain SHACL. It does not verify shapes, does not decide which repositories belong in an analytical subset, and does not compute constraint statistics.
+This repository discovers public GitHub repositories that may contain SHACL, verifies canonical SHACL in pinned repository content, and reports constraint statistics for that verified corpus. The primary content unit is a unique Git tree: repositories that share a Git tree SHA are one observation.
+
+Results snapshot: 11 October 2026.
+
+| | |
+| --- | ---: |
+| candidate repositories | 15,075 |
+| verified repositories | 7,569 |
+| unique verified content trees | 6,343 |
+| trees with statistics | 6,336 |
+
+Counts are conservative lower bounds because some files could not be parsed, fetched, or processed, and seven verified trees could not be extracted. The interactive companion is [docs/index.html](docs/index.html).
+
+A search hit is not a verified SHACL repository. The candidate table is the set of repositories returned by the queries below. Verification and statistics are later steps and do not rewrite that table.
 
 Lieber et al. 2020, “Statistics about Data Shape Use in RDF Data”, reported preliminary SHACL Core constraint counts for a manually selected corpus. They searched GitHub for “SHACL”, kept repositories whose shapes looked valid and not like simple examples, and also included a small number of well-known shapes such as Schema.org SHACL. The poster reports 13 projects and 1,978 NodeShapes. The archive supplied with this repository does not reproduce those two figures under a direct count of explicit `sh:NodeShape` triples. That difference is unresolved and is written down in [notes/lieber-reproduction-notes.md](notes/lieber-reproduction-notes.md).
 
-Lieber et al. reported both the total number of times a constraint type occurred and the percentage of projects in which it occurred at least once. Those measures are not computed in this milestone.
+Lieber et al. reported both the total number of times a constraint type occurred and the percentage of projects in which it occurred at least once. This corpus reports occurrence totals and the share of unique trees in which each parameter occurs. The two studies do not share a corpus or a unit of analysis, so the counts are not a growth rate. The comparison notes are in [notes/lieber-comparison-2020.md](notes/lieber-comparison-2020.md).
 
 Rabbani et al. 2022 surveyed how people generate and adopt SHACL and ShEx, reviewed tools, and tried automatic shape extraction on large knowledge graphs. It is not a GitHub repository census and is not used as a discovery method here.
 
@@ -32,7 +45,7 @@ python -m shacl_study discover
 
 `--dry-run` prints the planned queries and does not call GitHub. A saved run is resumed automatically. `--fresh` discards saved discovery state and starts again. `--query-id` limits execution to one planned query; if that repository query hits the result ceiling, its date partitions still run. `--max-pages` stops a query early and records `local_page_limit`. It does not trigger date partitioning.
 
-`inspect`, `stats`, `audit`, and `run-all` are refused. `verify` inspects repository content at a pinned commit. A search hit is still not, by itself, a verified SHACL repository.
+`inspect`, `audit`, and `run-all` are refused. `verify` inspects repository content at a pinned commit. `stats` is the census behind the 11 October 2026 snapshot. A search hit is still not, by itself, a verified SHACL repository.
 
 ## Queries
 
@@ -76,7 +89,7 @@ This is the set of repositories discoverable through these queries. It is not a 
 
 `discovered_by` and `discovery_queries` use `|` between values. `discovered_by` is `endpoint:query_family`.
 
-Candidate columns are filled from search results and from `GET /repos/{owner}/{repo}`. Parent repository fields come from that repository call. Verification writes separate files under `data/results/` and does not change this candidate table. Inclusion decisions and constraint statistics are not part of verification.
+Candidate columns are filled from search results and from `GET /repos/{owner}/{repo}`. Parent repository fields come from that repository call. Verification writes separate files under `data/results/` and does not change this candidate table. Whether a repository is verified is a verification decision. Constraint statistics are computed afterwards on unique verified trees.
 
 ## GitHub limits that bound the candidate set
 
