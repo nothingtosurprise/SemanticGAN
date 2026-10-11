@@ -181,6 +181,14 @@ class Inspection:
     stopped_early: bool = False
     tarball_skipped: str = ""
     tarball_skip_kind: str = ""
+    census: bool = False
+    census_strategy: str = "current"
+    strategy_fallback: str = ""
+    census_skip_paths: set[str] = field(default_factory=set)
+    census_accounted: set[str] = field(default_factory=set)
+    on_census_batch: object = None
+    census_batch_size: int = 200
+    census_new_files: int = 0
 
 
 def load_verification_config(path: Path) -> dict:
@@ -392,11 +400,16 @@ def inspect_repository(
     clock,
     hit_paths: list[str] | None = None,
     resolved_pin: dict | None = None,
+    census: bool = False,
+    census_strategy: str = "current",
+    census_skip_paths: set[str] | None = None,
+    on_census_batch=None,
+    census_batch_size: int = 200,
 ) -> tuple[dict, list[dict], list[dict]]:
     timestamp = clock().strftime("%Y-%m-%dT%H:%M:%SZ")
     prefilter_gate = not has_code_signal(row.get("discovered_by", ""))
     paths = _ordered_hit_paths(hit_paths or [])
-    use_hits = bool(paths) and not prefilter_gate
+    use_hits = bool(paths) and not prefilter_gate and not census
     inspection: Inspection | None = None
     if use_hits:
         hit_inspection, stop = _discovery_hit_pass(
@@ -409,14 +422,34 @@ def inspect_repository(
         if stop:
             inspection = hit_inspection
         else:
-            inspection = _collect(row, source=source, config=config, resolved_pin=resolved_pin)
+            inspection = _collect(
+                row,
+                source=source,
+                config=config,
+                resolved_pin=resolved_pin,
+                census=census,
+                census_strategy=census_strategy,
+                census_skip_paths=census_skip_paths,
+                on_census_batch=on_census_batch,
+                census_batch_size=census_batch_size,
+            )
             inspection.seconds_commit += hit_inspection.seconds_commit
             inspection.seconds_download += hit_inspection.seconds_download
             inspection.seconds_parse += hit_inspection.seconds_parse
             inspection.discovery_hit_files = hit_inspection.discovery_hit_files
             inspection.verification_pass = "tree_inspection"
     if inspection is None:
-        inspection = _collect(row, source=source, config=config, resolved_pin=resolved_pin)
+        inspection = _collect(
+            row,
+            source=source,
+            config=config,
+            resolved_pin=resolved_pin,
+            census=census,
+            census_strategy=census_strategy,
+            census_skip_paths=census_skip_paths,
+            on_census_batch=on_census_batch,
+            census_batch_size=census_batch_size,
+        )
         inspection.verification_pass = "tree_inspection"
     repository_row, failures = _decide(
         row,
@@ -425,6 +458,18 @@ def inspect_repository(
         timestamp=timestamp,
     )
     _annotate_pass(repository_row, inspection)
+    if census:
+        repository_row["_census_files"] = inspection.files
+        repository_row["_candidates_discovered"] = inspection.heuristic_paths
+        repository_row["_cap_hit"] = inspection.cap_hit
+        repository_row["_archive_too_large"] = inspection.archive_too_large
+        repository_row["_access_kind"] = inspection.access_kind
+        repository_row["_content_source"] = inspection.content_source
+        repository_row["_strategy_fallback"] = inspection.strategy_fallback
+        repository_row["_seconds_download"] = inspection.seconds_download
+        repository_row["_seconds_parse"] = inspection.seconds_parse
+        if inspection.on_census_batch:
+            inspection.on_census_batch(inspection)
     file_rows = [
         _file_row(row, inspection.commit_sha, item)
         for item in inspection.files
@@ -1027,8 +1072,22 @@ def _name_counts(members: list[dict]) -> list[list]:
     return [[name, count] for name, count in sorted(counts.items(), key=lambda item: (-item[1], item[0]))[:5]]
 
 
-def _collect(row: dict, *, source, config: dict, resolved_pin: dict | None = None) -> Inspection:
-    inspection = Inspection()
+def _collect(
+    row: dict,
+    *,
+    source,
+    config: dict,
+    resolved_pin: dict | None = None,
+    census: bool = False,
+    census_strategy: str = "current",
+    census_skip_paths: set[str] | None = None,
+    on_census_batch=None,
+    census_batch_size: int = 200,
+) -> Inspection:
+    inspection = Inspection(census=census, census_strategy=census_strategy)
+    inspection.census_skip_paths = set(census_skip_paths or ())
+    inspection.on_census_batch = on_census_batch
+    inspection.census_batch_size = census_batch_size
     branch = row.get("default_branch") or ""
     full_name = row["repository_full_name"]
     if resolved_pin is None:
@@ -1073,7 +1132,7 @@ def _collect(row: dict, *, source, config: dict, resolved_pin: dict | None = Non
         except ClassifiedFailure as exc:
             inspection.tarball_failure = exc
             return inspection
-        _inspect_tiers(inspection, row, blobs, source=source, config=config, local=True)
+        _inspect_tiers(inspection, row, blobs, source=source, config=config, local=True, census=census)
         return inspection
     inspection.content_source = "git_tree"
     entries = []
@@ -1084,7 +1143,7 @@ def _collect(row: dict, *, source, config: dict, resolved_pin: dict | None = Non
         if _unsafe_path(path) or not raw_extension_rule(path, config):
             continue
         entries.append({"path": path, "size": item.get("size"), "content": None, "too_large": False})
-    _inspect_tiers(inspection, row, entries, source=source, config=config, local=False)
+    _inspect_tiers(inspection, row, entries, source=source, config=config, local=False, census=census)
     return inspection
 
 
@@ -1096,19 +1155,77 @@ def _inspect_tiers(
     source,
     config: dict,
     local: bool,
+    census: bool = False,
 ) -> None:
     """Tier-1 RDF extensions first. A large candidate set can use one pinned tarball."""
     tier1, tier2 = _partition_tiers(entries, config)
     inspection.heuristic_paths = len(tier1) + len(tier2)
     threshold = int(config.get("tarball_candidate_threshold") or 0)
-    if not local and threshold and len(tier1) >= threshold and _use_tarball(inspection, row, source, config):
+    # Statistics may read past the verification cap. One pinned tarball is
+    # the practical way to do that. Verification still uses only the threshold.
+    over_cap = census and inspection.heuristic_paths > int(config["max_candidate_files"])
+    if census and inspection.census_strategy == "strong_first":
+        # Strong RDF extensions, then sniff extensions. No tarball. Every
+        # candidate is still visited.
+        verified = _walk_tier(
+            inspection,
+            row,
+            tier1,
+            source=source,
+            config=config,
+            local=local,
+            tier2_remaining=bool(tier2),
+            census=census,
+        )
+        if inspection.cap_hit or (verified and not census):
+            return
+        _walk_tier(
+            inspection,
+            row,
+            tier2,
+            source=source,
+            config=config,
+            local=local,
+            tier2_remaining=False,
+            census=census,
+        )
         return
-    verified = _walk_tier(inspection, row, tier1, source=source, config=config, local=local, tier2_remaining=bool(tier2))
-    if verified or inspection.cap_hit:
+    if census and inspection.census_strategy == "tarball" and not local:
+        if _use_tarball(inspection, row, source, config, census=census):
+            return
+        inspection.strategy_fallback = inspection.tarball_skip_kind or "tarball_unavailable"
+    elif not local and ((threshold and len(tier1) >= threshold) or over_cap) and _use_tarball(inspection, row, source, config, census=census):
         return
-    if not local and threshold and len(tier2) >= threshold and _use_tarball(inspection, row, source, config):
+    verified = _walk_tier(
+        inspection,
+        row,
+        tier1,
+        source=source,
+        config=config,
+        local=local,
+        tier2_remaining=bool(tier2),
+        census=census,
+    )
+    if inspection.cap_hit or (verified and not census):
         return
-    _walk_tier(inspection, row, tier2, source=source, config=config, local=local, tier2_remaining=False)
+    if (
+        not local
+        and threshold
+        and len(tier2) >= threshold
+        and not (census and inspection.tarball_skipped)
+        and _use_tarball(inspection, row, source, config, census=census)
+    ):
+        return
+    _walk_tier(
+        inspection,
+        row,
+        tier2,
+        source=source,
+        config=config,
+        local=local,
+        tier2_remaining=False,
+        census=census,
+    )
 
 
 def _partition_tiers(entries: list[dict], config: dict) -> tuple[list[dict], list[dict]]:
@@ -1123,7 +1240,7 @@ def _partition_tiers(entries: list[dict], config: dict) -> tuple[list[dict], lis
     return tier1, tier2
 
 
-def _use_tarball(inspection: Inspection, row: dict, source, config: dict) -> bool:
+def _use_tarball(inspection: Inspection, row: dict, source, config: dict, census: bool = False) -> bool:
     try:
         started = time.perf_counter()
         blobs = source.list_tarball(row["repository_full_name"], inspection.commit_sha)
@@ -1136,11 +1253,17 @@ def _use_tarball(inspection: Inspection, row: dict, source, config: dict) -> boo
         inspection.tarball_skipped = exc.detail
         inspection.tarball_skip_kind = "tarball_attempt_timeout"
         return False
+    if census and not blobs:
+        # An empty archive is not a complete listing when the git tree already
+        # named candidate files. Fall back to those files.
+        inspection.tarball_skipped = "tarball contained no candidate RDF files"
+        inspection.tarball_skip_kind = "tarball_empty"
+        return False
     inspection.content_source = "codeload_tarball"
     inspection.files = []
     inspection.cap_hit = False
     inspection.stopped_early = False
-    _inspect_tiers(inspection, row, blobs, source=source, config=config, local=True)
+    _inspect_tiers(inspection, row, blobs, source=source, config=config, local=True, census=census)
     return True
 
 
@@ -1153,21 +1276,38 @@ def _walk_tier(
     config: dict,
     local: bool,
     tier2_remaining: bool,
+    census: bool = False,
 ) -> bool:
-    limit = int(config["max_candidate_files"])
-    already = sum(1 for item in inspection.files if item.accepted or item.fetch_status)
-    room = max(0, limit - already)
-    chosen, capped = _cap_entries(entries, room)
-    if capped or (tier2_remaining and room == 0 and entries):
-        inspection.cap_hit = True
+    if census:
+        # The 400-file cap is a verification bound. Statistical enumeration
+        # keeps the deterministic path order and does not stop at that bound.
+        chosen = sorted(entries, key=lambda item: item["path"])
+    else:
+        limit = int(config["max_candidate_files"])
+        already = sum(1 for item in inspection.files if item.accepted or item.fetch_status)
+        room = max(0, limit - already)
+        chosen, capped = _cap_entries(entries, room)
+        if capped or (tier2_remaining and room == 0 and entries):
+            inspection.cap_hit = True
     needles = _needles(config)
     prefilter_gate = not has_code_signal(row.get("discovered_by", ""))
     for index, entry in enumerate(chosen):
+        path = str(entry.get("path") or "")
+        if census and path in inspection.census_skip_paths:
+            inspection.census_accounted.add(path)
+            continue
         result = _load_candidate(inspection, row, entry, source=source, config=config, local=local, needles=needles)
         inspection.files.append(result)
+        if census:
+            inspection.census_accounted.add(path)
         if not result.accepted or result.parse_status != "not_parsed":
+            if census:
+                _checkpoint_census(inspection)
             continue
         _parse_when_required(inspection, prefilter_gate=prefilter_gate)
+        if census:
+            _checkpoint_census(inspection)
+            continue
         if result.evidence and result.evidence.verifies:
             more_in_tier = index + 1 < len(chosen)
             if more_in_tier or tier2_remaining:
@@ -1343,14 +1483,14 @@ def _parse_when_required(inspection: Inspection, *, prefilter_gate: bool) -> Non
     accepted = [item for item in inspection.files if item.accepted and item.parse_status == "not_parsed"]
     if not accepted:
         return
-    if prefilter_gate and not any(item.text_hit for item in accepted):
+    if prefilter_gate and not inspection.census and not any(item.text_hit for item in accepted):
         return
     vocab = _vocab_for_parse()
     started = time.perf_counter()
     for result in accepted:
         if result.parse_status != "not_parsed":
             continue
-        if prefilter_gate and not result.text_hit:
+        if prefilter_gate and not inspection.census and not result.text_hit:
             continue
         parser_format = PARSER_FORMATS.get(result.candidate_rule, "")
         result.parser_format = parser_format
@@ -1380,6 +1520,8 @@ def _parse_when_required(inspection: Inspection, *, prefilter_gate: bool) -> Non
             continue
         result.parse_status = "parsed"
         result.evidence = classify_graph(graph, vocab)
+        if inspection.census:
+            result.payload = None
     inspection.seconds_parse += time.perf_counter() - started
 
 
@@ -1487,6 +1629,18 @@ def _shape_count(accepted: list[FileResult], attribute: str) -> int:
             else:
                 uris.add(subject)
     return len(uris) + blanks
+
+
+def _checkpoint_census(inspection: Inspection, *, force: bool = False) -> None:
+    """Save statistical progress in deterministic batches. Verification does not call this."""
+    if not inspection.census or inspection.on_census_batch is None:
+        return
+    if not force:
+        inspection.census_new_files += 1
+    size = inspection.census_batch_size if inspection.census_batch_size > 0 else 200
+    if force or inspection.census_new_files >= size:
+        inspection.on_census_batch(inspection)
+        inspection.census_new_files = 0
 
 
 def _cap_entries(entries: list[dict], limit: int) -> tuple[list[dict], bool]:

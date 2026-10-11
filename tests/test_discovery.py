@@ -430,7 +430,7 @@ def test_dry_run_prints_plan_without_token(capsys):
 
 
 def test_other_commands_are_not_implemented():
-    for command in ("inspect", "stats", "audit", "run-all"):
+    for command in ("inspect", "audit", "run-all"):
         with pytest.raises(SystemExit, match="not implemented"):
             main([command])
 

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SHACL in GitHub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <p class="kicker">Empirical companion</p>
+    <h1>SHACL in GitHub</h1>
+    <p class="lead">Interactive statistics from a systematically discovered and verified corpus of public GitHub repositories containing SHACL.</p>
+    <p class="pills">7,569 verified repositories · 6,343 unique content trees · 6,336 analyzed</p>
+    <p class="note">Counts are conservative lower bounds. Unparsed files were not repaired, and seven verified trees were not extracted.</p>
+  </header>
+
+  <main>
+    <section id="coverage">
+      <h2>Corpus</h2>
+      <div class="funnel" id="funnel"></div>
+      <ul class="coverage-notes" id="coverage-notes"></ul>
+    </section>
+
+    <section id="constraints">
+      <div class="section-head">
+        <h2>Constraint prevalence</h2>
+        <div class="toggle" role="group" aria-label="Constraint measure">
+          <button type="button" data-measure="trees" class="on">Trees</button>
+          <button type="button" data-measure="occurrences">Occurrences</button>
+        </div>
+      </div>
+      <p class="caption" id="constraint-caption"></p>
+      <div id="constraint-chart" class="chart"></div>
+    </section>
+
+    <section id="shapes">
+      <div class="section-head">
+        <h2>Distinct shapes per tree</h2>
+        <div class="toggle" role="group" aria-label="Histogram bins">
+          <button type="button" data-hist="log" class="on">Log bins</button>
+          <button type="button" data-hist="body">Body of the distribution</button>
+        </div>
+      </div>
+      <p class="caption">Median 16 distinct shapes. Mean 371. Maximum 84,974. 165 trees have none that parsed.</p>
+      <div id="shape-chart" class="chart"></div>
+    </section>
+
+    <section id="concentration">
+      <h2>Concentration</h2>
+      <p class="caption">Share of observed distinct shapes held by the largest trees. The dashed line is an equal share.</p>
+      <div id="curve"></div>
+      <div class="marker-row" id="markers"></div>
+    </section>
+
+    <section id="sparql">
+      <h2>Targets and SPARQL</h2>
+      <div class="split">
+        <div>
+          <div id="target-chart" class="chart"></div>
+        </div>
+        <aside class="sparql-card">
+          <p class="sparql-kicker">Structural SHACL-SPARQL</p>
+          <p class="sparql-num">35.6%</p>
+          <p>2,257 of 6,336 extracted trees contain a structural SPARQL constraint.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Tree percentages use the 6,336 extracted trees. Repository counts are a separate view and are not mixed into these charts.</p>
+  </footer>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

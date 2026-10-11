@@ -24,6 +24,12 @@ class GraphEvidence:
     noncanonical_detected: bool = False
     noncanonical_namespaces: set[str] = field(default_factory=set)
     noncanonical_shape_terms: set[str] = field(default_factory=set)
+    predicate_occurrences: dict[str, int] = field(default_factory=dict)
+    path_occurrences: int = 0
+    validation_reports: int = 0
+    sparql_links: int = 0
+    sparql_constraint_nodes: int = 0
+    sparql_target_occurrences: int = 0
 
     @property
     def verifies(self) -> bool:
@@ -50,6 +56,7 @@ def classify_graph(graph: Graph, vocab: ShaclVocabulary) -> GraphEvidence:
         if _local_name(predicate_iri) in _QUERY_LOCALS and _is_shacl_iri(predicate_iri):
             query_subjects.add(subject)
     evidence = GraphEvidence()
+    evidence.sparql_constraint_nodes = len(typed_constraints)
     for subject, predicate, obj in triples:
         predicate_iri = str(predicate)
         object_iri = str(obj) if isinstance(obj, URIRef) else ""
@@ -80,7 +87,39 @@ def classify_graph(graph: Graph, vocab: ShaclVocabulary) -> GraphEvidence:
         elif _mentions_shacl(subject, predicate, obj):
             evidence.other_triples += 1
         _record_https(evidence, subject, predicate_iri, object_iri, vocab, structural=structural)
+        _record_usage(
+            evidence,
+            predicate_iri,
+            object_iri,
+            vocab,
+            sparql_link=kind == "sparql" and structural and _local_name(predicate_iri) == "sparql",
+        )
     return evidence
+
+
+def _record_usage(
+    evidence: GraphEvidence,
+    predicate_iri: str,
+    object_iri: str,
+    vocab: ShaclVocabulary,
+    *,
+    sparql_link: bool,
+) -> None:
+    """Count canonical predicate uses. https IRIs stay out of these totals."""
+    if predicate_iri in vocab.core_constraint_parameters:
+        evidence.predicate_occurrences[predicate_iri] = evidence.predicate_occurrences.get(predicate_iri, 0) + 1
+    if predicate_iri == SH + "path":
+        evidence.path_occurrences += 1
+    if predicate_iri in vocab.core_target_predicates and predicate_iri != SH + "target":
+        evidence.predicate_occurrences[predicate_iri] = evidence.predicate_occurrences.get(predicate_iri, 0) + 1
+    if predicate_iri == SH + "target":
+        evidence.sparql_target_occurrences += 1
+    if predicate_iri == RDF_TYPE and object_iri in {SH + "SPARQLTarget", SH + "SPARQLTargetType"}:
+        evidence.sparql_target_occurrences += 1
+    if predicate_iri == RDF_TYPE and object_iri == SH + "ValidationReport":
+        evidence.validation_reports += 1
+    if sparql_link:
+        evidence.sparql_links += 1
 
 
 def _sparql_structure(

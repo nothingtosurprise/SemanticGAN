@@ -15,6 +15,21 @@ from shacl_study.discovery import config_digest, format_plan, load_config, plan_
 from shacl_study.github_client import API_VERSION, GitHubAuthError, GitHubClient
 from shacl_study.logging_utils import configure_logging
 from shacl_study.storage import write_manifest
+from shacl_study.statistics import (
+    aggregate_batch_a,
+    aggregate_pilot,
+    census_tree,
+    compare_cap_recheck,
+    describe_tree_workload,
+    estimate_heavy_runtime,
+    load_verified_repositories,
+    partition_statistics_batches,
+    reusable_complete_results,
+    select_heavy_benchmark,
+    select_statistics_pilot,
+    summarize_workload,
+    unique_verified_trees,
+)
 from shacl_study.verification import (
     GitHubContent,
     config_sha256,
@@ -29,7 +44,7 @@ from shacl_study.verification import (
     tree_identity_report,
 )
 
-NOT_IN_MILESTONE = ("inspect", "stats", "audit", "run-all")
+NOT_IN_MILESTONE = ("inspect", "audit", "run-all")
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -72,6 +87,32 @@ def main(argv: list[str] | None = None) -> None:
         action="store_true",
         help="Phase 2 only. Resolve commit and tree SHAs without downloading repository files.",
     )
+    stats = subparsers.add_parser("stats", help="Census shapes on unique verified trees. Pilot only.")
+    stats.add_argument("--config", default="config/verification.yaml")
+    stats.add_argument("--data-dir", default="data")
+    stats.add_argument("--pilot", type=int, help="Number of unique verified trees. The full census is not authorized.")
+    stats.add_argument("--recheck-capped", action="store_true", help="Re-enumerate only the pilot trees that hit the 400-file cap.")
+    stats.add_argument(
+        "--workload-census",
+        action="store_true",
+        help="Count candidate RDF files for every verified tree. Does not parse RDF.",
+    )
+    stats.add_argument(
+        "--batch-a",
+        action="store_true",
+        help="Extract statistics for verified trees with at most 5,000 candidate RDF files.",
+    )
+    stats.add_argument(
+        "--heavy-benchmark",
+        action="store_true",
+        help="Compare access strategies on 12 heavy trees. Does not run the rest of the heavy bucket.",
+    )
+    stats.add_argument(
+        "--heavy",
+        action="store_true",
+        help="Extract the 5,001+ candidate-file trees with the same parser and enumeration rules as Batch A.",
+    )
+    stats.add_argument("--seed", type=int, default=20261009)
     for name in NOT_IN_MILESTONE:
         subparsers.add_parser(name, help="Not implemented.")
 
@@ -80,6 +121,39 @@ def main(argv: list[str] | None = None) -> None:
         raise SystemExit(f"{args.command} is not implemented.")
     if args.command == "verify":
         _verify(args)
+        return
+    if args.command == "stats":
+        exclusive = [
+            bool(args.pilot is not None),
+            args.recheck_capped,
+            args.workload_census,
+            args.batch_a,
+            args.heavy_benchmark,
+            args.heavy,
+        ]
+        if sum(exclusive) > 1:
+            raise SystemExit("Choose one statistics mode.")
+        if args.workload_census:
+            _workload_census(args)
+            return
+        if args.batch_a:
+            _batch_a(args)
+            return
+        if args.heavy:
+            _heavy(args)
+            return
+        if args.heavy_benchmark:
+            _heavy_benchmark(args)
+            return
+        if args.recheck_capped:
+            _recheck_capped(args)
+            return
+        if args.pilot is None:
+            raise SystemExit(
+                "stats requires --pilot N, --recheck-capped, --workload-census, --batch-a, --heavy, or --heavy-benchmark. "
+                "The monolithic 6,343-tree run is not authorized."
+            )
+        _stats(args)
         return
     if args.max_pages is not None and args.max_pages < 1:
         raise SystemExit("--max-pages must be at least 1.")
@@ -269,6 +343,561 @@ def _verify(args) -> None:
             f"cold_mean_s={cold['mean']} "
             f"disagreements={report['disagreement_count']}"
         )
+
+
+def _stats(args) -> None:
+    if args.pilot > 200:
+        raise SystemExit(
+            "Refusing a statistics run above the pilot bound. "
+            "The full 6,343-tree census is not authorized until this pilot is reviewed."
+        )
+    data_dir = Path(args.data_dir)
+    results = data_dir / "results"
+    out_dir = results / "statistics_pilot"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    log_path = data_dir / "logs" / "statistics-pilot.log"
+    logger = configure_logging(log_path)
+    verified = load_verified_repositories(results)
+    trees = unique_verified_trees(verified)
+    selected = select_statistics_pilot(trees, args.pilot, seed=args.seed)
+    done_path = out_dir / "trees.jsonl"
+    done = _load_jsonl_keys(done_path)
+    logger.info(
+        "statistics pilot selected=%s population_trees=%s population_repositories=%s already_saved=%s",
+        len(selected),
+        len(trees),
+        len(verified),
+        len(done),
+    )
+    _load_dotenv(Path(".env"))
+    token = os.environ.get("GITHUB_TOKEN", "")
+    config_path = Path(args.config)
+    config = load_verification_config(config_path)
+    try:
+        client = GitHubClient(token, data_dir / "raw" / "github-cache")
+        source = GitHubContent(client, config)
+        clock = lambda: datetime.now(timezone.utc)
+        for index, tree in enumerate(selected, start=1):
+            if tree["tree_sha"] in done:
+                continue
+            logger.info(
+                "statistics %s/%s %s donor=%s phase=%s fork=%s",
+                index,
+                len(selected),
+                tree["tree_sha"][:12],
+                tree["donor"]["repository_full_name"],
+                tree["phase_origin"],
+                tree["fork_origin"],
+            )
+            result = census_tree(tree, source=source, config=config, vocab=None, clock=clock)
+            with done_path.open("a", encoding="utf-8") as handle:
+                handle.write(json.dumps(result) + "\n")
+            logger.info(
+                "statistics status %s nodes=%s properties=%s distinct=%s seconds=%s capped=%s",
+                result["donor"],
+                result["node_shapes"],
+                result["property_shapes"],
+                result["distinct_shapes"],
+                result["seconds"],
+                result["capped"],
+            )
+    except GitHubAuthError as exc:
+        raise SystemExit(str(exc)) from exc
+    saved = _load_jsonl(done_path)
+    summary = aggregate_pilot(saved, population_trees=len(trees), population_repositories=len(verified))
+    summary["seed"] = args.seed
+    summary["pilot_requested"] = args.pilot
+    (out_dir / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    print(
+        "statistics_pilot "
+        f"trees={summary['pilot_trees_extracted']}/{summary['pilot_trees_attempted']} "
+        f"node_shapes={summary['shape_totals']['node_shapes']} "
+        f"property_shapes={summary['shape_totals']['property_shapes']} "
+        f"median_s={summary['runtime_seconds'].get('median')} "
+        f"projected_hours_at_mean={summary['projection'].get('hours_at_sample_mean')}"
+    )
+
+
+def _recheck_capped(args) -> None:
+    """Uncapped enumeration of the pilot trees whose counts stopped at 400 files."""
+    data_dir = Path(args.data_dir)
+    results = data_dir / "results"
+    pilot_path = results / "statistics_pilot" / "trees.jsonl"
+    pilot_rows = _load_jsonl(pilot_path)
+    old_rows = [row for row in pilot_rows if row.get("capped")]
+    if not old_rows:
+        raise SystemExit(f"No capped trees in {pilot_path}.")
+    out_dir = results / "statistics_pilot" / "cap_recheck"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    log_path = data_dir / "logs" / "statistics-cap-recheck.log"
+    logger = configure_logging(log_path)
+    verified = load_verified_repositories(results)
+    trees = {item["tree_sha"]: item for item in unique_verified_trees(verified)}
+    done_path = out_dir / "trees.jsonl"
+    done = _load_jsonl_keys(done_path)
+    logger.info("cap recheck trees=%s already_saved=%s", len(old_rows), len(done))
+    _load_dotenv(Path(".env"))
+    token = os.environ.get("GITHUB_TOKEN", "")
+    config = load_verification_config(Path(args.config))
+    try:
+        client = GitHubClient(token, data_dir / "raw" / "github-cache")
+        source = GitHubContent(client, config)
+        clock = lambda: datetime.now(timezone.utc)
+        for index, old in enumerate(old_rows, start=1):
+            tree = trees.get(old["tree_sha"])
+            if tree is None:
+                raise SystemExit(f"Capped pilot tree {old['tree_sha']} is not in the verified corpus.")
+            if old["tree_sha"] in done:
+                continue
+            logger.info(
+                "cap recheck %s/%s %s donor=%s",
+                index,
+                len(old_rows),
+                old["tree_sha"][:12],
+                old["donor"],
+            )
+            result = census_tree(
+                tree,
+                source=source,
+                config=config,
+                vocab=None,
+                clock=clock,
+                checkpoint_path=out_dir / "checkpoints" / f"{old['tree_sha']}.json",
+            )
+            with done_path.open("a", encoding="utf-8") as handle:
+                handle.write(json.dumps(result) + "\n")
+            logger.info(
+                "cap recheck status %s nodes=%s->%s properties=%s->%s distinct=%s->%s complete=%s seconds=%s",
+                result["donor"],
+                old["node_shapes"],
+                result["node_shapes"],
+                old["property_shapes"],
+                result["property_shapes"],
+                old["distinct_shapes"],
+                result["distinct_shapes"],
+                result["enumeration_complete"],
+                result["seconds"],
+            )
+    except GitHubAuthError as exc:
+        raise SystemExit(str(exc)) from exc
+    new_rows = _load_jsonl(done_path)
+    summary = compare_cap_recheck(old_rows, new_rows, pilot_rows, population_trees=len(trees))
+    summary["verified_trees_already_at_cap"] = sum(1 for item in trees.values() if item["recorded_candidates"] >= 400)
+    (out_dir / "comparison.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    complete = sum(1 for row in new_rows if row.get("enumeration_complete"))
+    print(
+        "cap_recheck "
+        f"trees={len(new_rows)}/{len(old_rows)} "
+        f"complete={complete} "
+        f"extra_seconds={summary['extra_seconds']} "
+        f"blended_hours_at_mean={summary['projection_blended_pilot'].get('hours_at_sample_mean')}"
+    )
+
+
+def _workload_census(args) -> None:
+    """Metadata-only candidate counts. This does not parse RDF or write shape statistics."""
+    data_dir = Path(args.data_dir)
+    results = data_dir / "results"
+    out_dir = results / "statistics_pilot" / "workload_census"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    logger = configure_logging(data_dir / "logs" / "statistics-workload-census.log")
+    verified = load_verified_repositories(results)
+    trees = unique_verified_trees(verified)
+    done_path = out_dir / "trees.jsonl"
+    done = _load_jsonl_keys(done_path)
+    logger.info("workload census trees=%s already_saved=%s", len(trees), len(done))
+    _load_dotenv(Path(".env"))
+    token = os.environ.get("GITHUB_TOKEN", "")
+    config = load_verification_config(Path(args.config))
+    try:
+        client = GitHubClient(token, data_dir / "raw" / "github-cache")
+        for index, tree in enumerate(trees, start=1):
+            if tree["tree_sha"] in done:
+                continue
+            if index == 1 or index % 200 == 0:
+                logger.info("workload census %s/%s %s", index, len(trees), tree["donor"]["repository_full_name"])
+            row = describe_tree_workload(client, tree, config)
+            with done_path.open("a", encoding="utf-8") as handle:
+                handle.write(json.dumps(row) + "\n")
+    except GitHubAuthError as exc:
+        raise SystemExit(str(exc)) from exc
+    saved = _load_jsonl(done_path)
+    pilot = _load_jsonl(results / "statistics_pilot" / "trees.jsonl")
+    recheck = _load_jsonl(results / "statistics_pilot" / "cap_recheck" / "trees.jsonl")
+    measured = {row["tree_sha"]: row["seconds"] for row in pilot}
+    for row in recheck:
+        if row.get("enumeration_complete"):
+            measured[row["tree_sha"]] = row["seconds"]
+    summary = summarize_workload(saved, measured)
+    (out_dir / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    dist = summary["candidate_files"]
+    runtime = summary["runtime"]
+    print(
+        "workload_census "
+        f"trees={summary['trees']} complete={summary['listing_complete']} "
+        f"median_files={dist.get('median')} p99_files={dist.get('p99')} max_files={dist.get('max')} "
+        f"over_5000={summary['thresholds']['over_5000']} "
+        f"hours_p25={runtime['estimated_hours_p25_rate']} "
+        f"hours_median={runtime['estimated_hours_median_rate']} "
+        f"hours_p75={runtime['estimated_hours_p75_rate']}"
+    )
+
+
+def _batch_a(args) -> None:
+    """Complete enumeration for trees at or under 5,000 candidate RDF files."""
+    data_dir = Path(args.data_dir)
+    results = data_dir / "results"
+    out_dir = results / "statistics_batch_a"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    logger = configure_logging(data_dir / "logs" / "statistics-batch-a.log")
+    verified = load_verified_repositories(results)
+    trees = unique_verified_trees(verified)
+    workload = _load_jsonl(results / "statistics_pilot" / "workload_census" / "trees.jsonl")
+    if len(workload) < len(trees):
+        raise SystemExit("The workload census is incomplete. Batch A is not started.")
+    parts = partition_statistics_batches(trees, workload)
+    selected = parts["batch_a"]
+    done_path = out_dir / "trees.jsonl"
+    done = _load_jsonl_keys(done_path)
+    if not done:
+        prior = _load_jsonl(results / "statistics_pilot" / "trees.jsonl")
+        prior.extend(_load_jsonl(results / "statistics_pilot" / "cap_recheck" / "trees.jsonl"))
+        reusable = reusable_complete_results({tree["tree_sha"] for tree in selected}, prior)
+        if reusable:
+            with done_path.open("a", encoding="utf-8") as handle:
+                for row in reusable:
+                    handle.write(json.dumps(row) + "\n")
+            done = {row["tree_sha"] for row in reusable}
+            logger.info("batch A reused complete enumerations=%s", len(reusable))
+    logger.info(
+        "batch A trees=%s heavy_excluded=%s unresolved_excluded=%s already_saved=%s",
+        len(selected),
+        len(parts["heavy"]),
+        len(parts["unresolved"]),
+        len(done),
+    )
+    _load_dotenv(Path(".env"))
+    token = os.environ.get("GITHUB_TOKEN", "")
+    config = load_verification_config(Path(args.config))
+
+    def write_summary() -> None:
+        saved = _load_jsonl(done_path)
+        summary = aggregate_batch_a(
+            saved,
+            batch_a_trees=len(selected),
+            heavy_trees=len(parts["heavy"]),
+            unresolved_trees=len(parts["unresolved"]),
+            unresolved_also_heavy=len(parts["unresolved_also_heavy"]),
+            population_trees=len(trees),
+        )
+        (out_dir / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+
+    write_summary()
+    try:
+        client = GitHubClient(token, data_dir / "raw" / "github-cache")
+        source = GitHubContent(client, config)
+        clock = lambda: datetime.now(timezone.utc)
+        for index, tree in enumerate(selected, start=1):
+            sha = tree["tree_sha"]
+            if sha in done:
+                continue
+            logger.info(
+                "batch A %s/%s %s donor=%s",
+                index,
+                len(selected),
+                sha[:12],
+                tree["donor"]["repository_full_name"],
+            )
+            checkpoint = out_dir / "checkpoints" / f"{sha}.json"
+            result = census_tree(
+                tree,
+                source=source,
+                config=config,
+                vocab=None,
+                clock=clock,
+                checkpoint_path=checkpoint,
+            )
+            with done_path.open("a", encoding="utf-8") as handle:
+                handle.write(json.dumps(result) + "\n")
+            checkpoint.unlink(missing_ok=True)
+            done.add(sha)
+            logger.info(
+                "batch A status %s nodes=%s properties=%s distinct=%s complete=%s partial=%s seconds=%s",
+                result["donor"],
+                result["node_shapes"],
+                result["property_shapes"],
+                result["distinct_shapes"],
+                result["enumeration_complete"],
+                result["counts_partial"],
+                result["seconds"],
+            )
+            if len(done) % 100 == 0:
+                write_summary()
+    except GitHubAuthError as exc:
+        raise SystemExit(str(exc)) from exc
+    write_summary()
+    summary = json.loads((out_dir / "summary.json").read_text(encoding="utf-8"))
+    totals = summary["shape_totals"]
+    print(
+        "batch_a "
+        f"trees={summary['trees_completed']}/{summary['batch_a_trees']} "
+        f"complete={summary['trees_with_complete_enumeration']} "
+        f"partial={summary['trees_with_partial_counts']} "
+        f"node_shapes={totals['node_shapes']} "
+        f"property_shapes={totals['property_shapes']} "
+        f"distinct_shapes={totals['distinct_shapes']} "
+        f"hours={summary['runtime_hours']} "
+        f"partial_corpus=true"
+    )
+
+
+def _heavy(args) -> None:
+    """Same enumeration and parser mapping as Batch A, for the 5,001+ file trees only."""
+    data_dir = Path(args.data_dir)
+    results = data_dir / "results"
+    out_dir = results / "statistics_heavy"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    logger = configure_logging(data_dir / "logs" / "statistics-heavy.log")
+    verified = load_verified_repositories(results)
+    trees = unique_verified_trees(verified)
+    workload = _load_jsonl(results / "statistics_pilot" / "workload_census" / "trees.jsonl")
+    if len(workload) < len(trees):
+        raise SystemExit("The workload census is incomplete. The heavy extraction is not started.")
+    parts = partition_statistics_batches(trees, workload)
+    selected = parts["heavy"]
+    done_path = out_dir / "trees.jsonl"
+    done = _load_jsonl_keys(done_path)
+    if not done:
+        prior = _load_jsonl(results / "statistics_pilot" / "cap_recheck" / "trees.jsonl")
+        reusable = reusable_complete_results({tree["tree_sha"] for tree in selected}, prior)
+        if reusable:
+            with done_path.open("a", encoding="utf-8") as handle:
+                for row in reusable:
+                    handle.write(json.dumps(row) + "\n")
+            done = {row["tree_sha"] for row in reusable}
+            logger.info("heavy reused complete enumerations=%s", len(reusable))
+    logger.info(
+        "heavy trees=%s unresolved_also_heavy=%s already_saved=%s",
+        len(selected),
+        len(parts["unresolved_also_heavy"]),
+        len(done),
+    )
+    _load_dotenv(Path(".env"))
+    token = os.environ.get("GITHUB_TOKEN", "")
+    config = load_verification_config(Path(args.config))
+
+    def write_summary() -> None:
+        saved = _load_jsonl(done_path)
+        summary = aggregate_batch_a(
+            saved,
+            batch_a_trees=len(selected),
+            heavy_trees=len(selected),
+            unresolved_trees=len(parts["unresolved"]),
+            unresolved_also_heavy=len(parts["unresolved_also_heavy"]),
+            population_trees=len(trees),
+        )
+        summary["corpus_scope"] = "heavy_trees"
+        summary["partial_corpus"] = True
+        summary["label"] = (
+            "Heavy trees only: verified trees with at least 5,001 candidate RDF files. "
+            "Parser mapping and enumeration rules are the same as Batch A. "
+            "Percentages use this heavy set as the denominator."
+        )
+        summary["heavy_trees"] = len(selected)
+        summary.pop("batch_a_trees", None)
+        summary.pop("excluded_heavy_trees", None)
+        for row in summary.get("constraints", []) + summary.get("targets", []):
+            if "percent_of_batch_a_trees" in row:
+                row["percent_of_heavy_trees"] = row.pop("percent_of_batch_a_trees")
+            if "percent_of_batch_a_repositories" in row:
+                row["percent_of_heavy_repositories"] = row.pop("percent_of_batch_a_repositories")
+        (out_dir / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+
+    write_summary()
+    try:
+        client = GitHubClient(token, data_dir / "raw" / "github-cache")
+        source = GitHubContent(client, config)
+        clock = lambda: datetime.now(timezone.utc)
+        for index, tree in enumerate(selected, start=1):
+            sha = tree["tree_sha"]
+            if sha in done:
+                continue
+            logger.info(
+                "heavy %s/%s %s donor=%s",
+                index,
+                len(selected),
+                sha[:12],
+                tree["donor"]["repository_full_name"],
+            )
+            checkpoint = out_dir / "checkpoints" / f"{sha}.json"
+            result = census_tree(
+                tree,
+                source=source,
+                config=config,
+                vocab=None,
+                clock=clock,
+                checkpoint_path=checkpoint,
+            )
+            with done_path.open("a", encoding="utf-8") as handle:
+                handle.write(json.dumps(result) + "\n")
+            checkpoint.unlink(missing_ok=True)
+            done.add(sha)
+            logger.info(
+                "heavy status %s nodes=%s properties=%s distinct=%s complete=%s partial=%s seconds=%s",
+                result["donor"],
+                result["node_shapes"],
+                result["property_shapes"],
+                result["distinct_shapes"],
+                result["enumeration_complete"],
+                result["counts_partial"],
+                result["seconds"],
+            )
+            if len(done) % 10 == 0:
+                write_summary()
+    except GitHubAuthError as exc:
+        raise SystemExit(str(exc)) from exc
+    write_summary()
+    summary = json.loads((out_dir / "summary.json").read_text(encoding="utf-8"))
+    totals = summary["shape_totals"]
+    print(
+        "heavy "
+        f"trees={summary['trees_completed']}/{summary['heavy_trees']} "
+        f"complete={summary['trees_with_complete_enumeration']} "
+        f"partial={summary['trees_with_partial_counts']} "
+        f"node_shapes={totals['node_shapes']} "
+        f"property_shapes={totals['property_shapes']} "
+        f"distinct_shapes={totals['distinct_shapes']} "
+        f"hours={summary['runtime_hours']} "
+        f"partial_corpus=true"
+    )
+
+
+def _heavy_benchmark(args) -> None:
+    """Time three complete access strategies on 12 heavy trees. Does not run the other 95."""
+    data_dir = Path(args.data_dir)
+    results = data_dir / "results"
+    out_dir = results / "statistics_heavy_benchmark"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    logger = configure_logging(data_dir / "logs" / "statistics-heavy-benchmark.log")
+    verified = load_verified_repositories(results)
+    trees = {item["tree_sha"]: item for item in unique_verified_trees(verified)}
+    workload = _load_jsonl(results / "statistics_pilot" / "workload_census" / "trees.jsonl")
+    selected = select_heavy_benchmark(workload)
+    if len(selected) != 12:
+        raise SystemExit(f"Heavy benchmark selected {len(selected)} trees, expected 12.")
+    missing = [item["donor"] for item in selected if item["tree_sha"] not in trees]
+    if missing:
+        raise SystemExit(f"Benchmark trees are not in the verified corpus: {', '.join(missing)}")
+    (out_dir / "selection.json").write_text(json.dumps(selected, indent=2) + "\n", encoding="utf-8")
+    logger.info("heavy benchmark trees=%s", ", ".join(f"{item['role']}={item['donor']}" for item in selected))
+    _load_dotenv(Path(".env"))
+    token = os.environ.get("GITHUB_TOKEN", "")
+    config = load_verification_config(Path(args.config))
+    strategies = ("tarball", "strong_first", "current")
+    try:
+        client = GitHubClient(token, data_dir / "raw" / "github-cache")
+        source = GitHubContent(client, config)
+        clock = lambda: datetime.now(timezone.utc)
+        # Tarball, then the current path, then per-file strong-first.
+        # Strong-first is last because it issues one request per candidate file.
+        for strategy in strategies:
+            for spec in selected:
+                strategy_dir = out_dir / strategy
+                strategy_dir.mkdir(parents=True, exist_ok=True)
+                done_path = strategy_dir / "trees.jsonl"
+                done = _load_jsonl_keys(done_path)
+                if spec["tree_sha"] in done:
+                    continue
+                logger.info("heavy benchmark %s strategy=%s donor=%s", spec["role"], strategy, spec["donor"])
+                tree = trees[spec["tree_sha"]]
+                checkpoint = out_dir / "checkpoints" / strategy / f"{spec['tree_sha']}.json"
+                result = census_tree(
+                    tree,
+                    source=source,
+                    config=config,
+                    vocab=None,
+                    clock=clock,
+                    checkpoint_path=checkpoint,
+                    strategy=strategy,
+                )
+                result["benchmark_role"] = spec["role"]
+                result["workload_type"] = spec["workload_type"]
+                with done_path.open("a", encoding="utf-8") as handle:
+                    handle.write(json.dumps(result) + "\n")
+                checkpoint.unlink(missing_ok=True)
+                logger.info(
+                    "heavy benchmark status %s strategy=%s complete=%s fallback=%s seconds=%s download=%s parse=%s source=%s",
+                    spec["donor"],
+                    strategy,
+                    result["enumeration_complete"],
+                    result["strategy_fallback"],
+                    result["seconds"],
+                    result["seconds_download"],
+                    result["seconds_parse"],
+                    result["content_source"],
+                )
+    except GitHubAuthError as exc:
+        raise SystemExit(str(exc)) from exc
+    measured = []
+    for strategy in strategies:
+        for row in _load_jsonl(out_dir / strategy / "trees.jsonl"):
+            measured.append(row)
+    heavy_rows = [row for row in workload if int(row.get("candidate_files") or 0) >= 5001]
+    estimate = estimate_heavy_runtime(heavy_rows, measured)
+    brief = [
+        {
+            "role": row.get("benchmark_role"),
+            "donor": row.get("donor"),
+            "workload_type": row.get("workload_type"),
+            "requested_strategy": row.get("requested_strategy"),
+            "seconds": row.get("seconds"),
+            "seconds_download": row.get("seconds_download"),
+            "seconds_parse": row.get("seconds_parse"),
+            "enumeration_complete": row.get("enumeration_complete"),
+            "counts_partial": row.get("counts_partial"),
+            "partial_reasons": row.get("partial_reasons"),
+            "candidates_discovered": row.get("candidates_discovered"),
+            "files_parsed": row.get("files_parsed"),
+            "parse_failures": row.get("parse_failures"),
+            "strategy_fallback": row.get("strategy_fallback"),
+            "content_source": row.get("content_source"),
+            "node_shapes": row.get("node_shapes"),
+            "property_shapes": row.get("property_shapes"),
+            "distinct_shapes": row.get("distinct_shapes"),
+        }
+        for row in measured
+    ]
+    summary = {
+        "partial_corpus": True,
+        "label": "Access-strategy benchmark for 12 heavy trees. The other heavy trees were not extracted.",
+        "trees": selected,
+        "runs": brief,
+        "estimate": estimate,
+    }
+    (out_dir / "summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+    hours = estimate["estimated_hours_if_one_strategy"]
+    print(
+        "heavy_benchmark "
+        f"runs={len(measured)}/36 "
+        f"hours_tarball={hours.get('tarball')} "
+        f"hours_strong_first={hours.get('strong_first')} "
+        f"hours_current={hours.get('current')} "
+        f"hours_by_type={estimate['estimated_hours_fastest_by_workload_type']}"
+    )
+
+
+def _load_jsonl(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    rows = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if line.strip():
+            rows.append(json.loads(line))
+    return rows
+
+
+def _load_jsonl_keys(path: Path) -> set[str]:
+    return {row["tree_sha"] for row in _load_jsonl(path)}
 
 
 def _repository_ids(path: Path) -> set[str]:
